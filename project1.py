@@ -1,6 +1,6 @@
 import numpy as np
 
-def tdma(a,b,c,d):
+def tdma(a,b,c,d,x):
     n=len(b)
 
     c_tilde=np.zeros(n)
@@ -14,5 +14,9 @@ def tdma(a,b,c,d):
         c_tilde[i]=c[i]*m
         d_tilde[i]=(d[i]-a[i]*d_tilde[i-1])*m
 
+    v=np.zeros(n)
+
     for i in reversed(range(1,n-1)):
-        x[i]=d_tilde[i]-c_tilde[i]+d[i+1]
+        v[i]=d_tilde[i]-c_tilde[i]+d[i+1]
+
+    x[1:n]=v
