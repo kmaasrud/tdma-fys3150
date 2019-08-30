@@ -1,0 +1,100 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage[utf8]{inputenc}
+\usepackage[fleqn]{amsmath}
+\usepackage{titling}
+\usepackage{graphicx,wrapfig,lipsum}
+\usepackage{amssymb}
+\usepackage{listings}
+\usepackage[font=small,labelsep=none]{caption}
+
+\setlength{\droptitle}{-10em}
+
+\title{Project 1 FYS3150}\vspace{-3ex}
+\author{Anna Stray Rongve}
+\date{\vspace{-5ex}}
+
+\begin{document}
+
+\maketitle
+\section*{Abstract}
+\maketitle
+\section*{Introduction}
+\maketitle
+\section*{Theory and technicalites}
+\maketitle
+\section*{Conclusion and perspectives}
+
+\maketitle
+\section*{Project 1 a)}
+
+For $i = 0$ and $i = n$ the boundary conditions gives us $v(0) = v(1) = 0$.
+\\
+For $i = 1$
+
+\begin{equation}
+   -\frac{v_2+v_0-2v_1}{h^2} = f_1
+\end{equation}
+\\
+For $i = 2$\\
+\begin{equation}
+   -\frac{v_3+v_1-2v_2}{h^2}{} = f_2
+\end{equation}
+\vdots\\
+\\
+For  $i = n-1$\\
+\\
+\begin{equation}
+  -\frac{v_n+v_{n-2}-2v_{n-1}}{h^2}{} = f_{n-1}
+\end{equation}\\
+If you multiply both sides by $h^2$
+
+\begin{equation}
+   -{v_2+v_0-2v_1} = h^2\cdot{f_1}
+\end{equation}
+\\
+\begin{equation}
+   -{v_3+v_1-2v_2} = {h^2}\cdot{f_2}
+\end{equation}
+\vdots\\
+\begin{equation}
+  -v_n+v_{n-2}-2v_{n-1} = {h^2}\cdot{f_{n-1}}
+\end{equation}
+\\Which you can rewrite as a linear set of equations where\\
+
+\\$A = $
+ \begin{bmatrix}
+  2 & -1 & 0 & \cdots & \cdots & 0 \\
+  -1 & 2 & -1 & 0 & \cdots &\cdots\\
+  0 & -1 &2 & -1 & 0 & \cdots \\
+   & \cdots & \cdots & \cdots & \cdots & \cdots \\
+   0 & \cdots & \cdots & -1 & 2 & -1\\
+   0 & \cdots & \cdots & 0 & -1 & 2
+\end{bmatrix}
+\newpage
+\]\\
+$\hat{v}= $
+ \begin{bmatrix}
+  v_1 & v_2 & & \cdots & v_{n-1}\\
+\end{bmatrix}
+\]
+
+\newline
+and
+\newline
+$\tilde{b_i} = $
+ \begin{bmatrix}
+  \tilde{b_1} & \tilde{b_2} & & \cdots & \tilde{b_{n-1}}
+\end{bmatrix}
+\]
+
+\\Where $ \tilde{b_i} = h^2 \cdot f_i $
+
+\maketitle
+\section*{Project 1 b)}
+
+\section*{Appendix}
+\maketitle
+\section*{Bibliography}
+\maketitle
+\end{document}
