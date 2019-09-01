@@ -1,0 +1,109 @@
+\documentclass[]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+\else % if luatex or xelatex
+  \ifxetex
+    \usepackage{mathspec}
+    \usepackage{xltxtra,xunicode}
+  \else
+    \usepackage{fontspec}
+  \fi
+  \defaultfontfeatures{Mapping=tex-text,Scale=MatchLowercase}
+  \newcommand{\euro}{€}
+\fi
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% use microtype if available
+\IfFileExists{microtype.sty}{\usepackage{microtype}}{}
+\ifxetex
+  \usepackage[setpagesize=false, % page size defined by xetex
+              unicode=false, % unicode breaks when used with xetex
+              xetex]{hyperref}
+\else
+  \usepackage[unicode=true]{hyperref}
+\fi
+\hypersetup{breaklinks=true,
+            bookmarks=true,
+            pdfauthor={9 September 2019},
+            pdftitle={Project 1 FYS3150},
+            colorlinks=true,
+            citecolor=blue,
+            urlcolor=blue,
+            linkcolor=magenta,
+            pdfborder={0 0 0}}
+\urlstyle{same}  % don't use monospace font for urls
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\setcounter{secnumdepth}{0}
+
+\title{Project 1 FYS3150}
+\author{9 September 2019}
+\date{Authors}
+
+\begin{document}
+\maketitle
+
+\section*{Abstract}\label{abstract}
+\addcontentsline{toc}{section}{Abstract}
+
+\section*{Introduction}\label{introduction}
+\addcontentsline{toc}{section}{Introduction}
+
+\section*{Theory and technicalites}\label{theory-and-technicalites}
+\addcontentsline{toc}{section}{Theory and technicalites}
+
+\section*{Conclusion and
+perspectives}\label{conclusion-and-perspectives}
+\addcontentsline{toc}{section}{Conclusion and perspectives}
+
+\section*{Project 1 a)}\label{project-1-a}
+\addcontentsline{toc}{section}{Project 1 a)}
+
+For $i = 0$ and $i = n$ the boundary conditions gives us
+$v(0) = v(1) = 0$.
+
+For $i = 1$
+
+\[-\frac{v_2+v_0-2v_1}{h^2} = f_1\]
+
+For $i = 2$\\ \[-\frac{v_3+v_1-2v_2}{h^2}{} = f_2\]
+
+For $i = n-1$
+
+\[-\frac{v_n+v_{n-2}-2v_{n-1}}{h^2}{} = f_{n-1}\]
+
+If you multiply both sides by $h^2$
+
+\[-{v_2+v_0-2v_1} = h^2\cdot{f_1}\]
+
+\[-{v_3+v_1-2v_2} = {h^2}\cdot{f_2}\]
+
+\[-v_n+v_{n-2}-2v_{n-1} = {h^2}\cdot{f_{n-1}}\]
+
+Which you can rewrite as a linear set of equations where
+
+\[A=\left[\begin{matrix}2 & -1 & 0 & & & 0\\-1 & 2 & -1 & 0 & &\\0 & -1 &2 & -1 & 0 &\\\vdots&\vdots & \ddots& \ddots&\ddots &\vdots\\0 & & & -1 & 2 & -1\\0 & & & 0 & -1 & 2\end{matrix}\right]\]
+
+\[\hat{v}=\left[\begin{matrix}v_{1}\\v_{2}\\v_{3}\\ \vdots \\ v_{n-1}\end{matrix}\right]\]
+
+and
+\[\tilde{b_i}=\left[\begin{matrix}\tilde{b}_{1}\\\tilde{b}_{2}\\\tilde{b}_{3}\\ \vdots \\ \tilde{b}_{n-1}\end{matrix}\right]\]
+
+Where $\tilde{b_i} = h^2 \cdot f_i$
+
+\section*{Project 1 b)}\label{project-1-b}
+\addcontentsline{toc}{section}{Project 1 b)}
+
+\section*{Appendix}\label{appendix}
+\addcontentsline{toc}{section}{Appendix}
+
+\section*{Bibliography}\label{bibliography}
+\addcontentsline{toc}{section}{Bibliography}
+
+\end{document}
