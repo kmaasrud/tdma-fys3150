@@ -50,7 +50,7 @@ $$-v_n+v_{n-2}-2v_{n-1} = {h^2}\cdot{f_{n-1}}$$
 \
 Which you can rewrite as a linear set of equations where\
 
-$$A=\left[\begin{matrix}2 & -1 & 0 & & & 0\\-1 & 2 & -1 & 0 & &\\0 & -1 &2 & -1 & 0 &\\\vdots&\vdots & \ddots& \ddots&\ddots &\vdots\\0 & & & -1 & 2 & -1\\0 & & & 0 & -1 & 2\end{matrix}\right]$$
+
 
 $\hat{v}=\left[\begin{matrix}v_{1}\\v_{2}\\v_{3}\\ \vdots \\ v_{n-1}\end{matrix}\right]$
 
