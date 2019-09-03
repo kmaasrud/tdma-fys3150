@@ -10,14 +10,14 @@ def tdma(a,b,c,d,u):
     c_tilde[0]=c[0]/b[0]
     d_tilde[0]=d[0]/b[0]
 
-    for i in range(1,n-1):
+    for i in range(1,n-1):  #FORWARD substitution
         m=1.0/(b[i]-a[i]*c_tilde[i-1])  #saves 1 division, 1 multiplication and 1 subtraction
         c_tilde[i]=c[i]*m
         d_tilde[i]=(d[i]-a[i]*d_tilde[i-1])*m
 
     v=np.zeros(n)   #this represents the vector v, the solution of the linear set of equations Av=d
 
-    for i in reversed(range(1,n-1)):
+    for i in reversed(range(1,n-1)):    #BACKWARD substitution
         v[i]=d_tilde[i]-c_tilde[i]+d[i+1]
 
     u[1:n+1]=v  #inserting the solution of the linear eq. into the final solution, with boundary conditions
