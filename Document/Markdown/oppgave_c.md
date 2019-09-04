@@ -1,5 +1,5 @@
 # Project 1 c)
-##Modified algorithm
+## Modified algorithm
 
 $\mathbf{A}=\left[\begin{matrix}d & e & 0 & \cdots & \cdots & \cdots\\e & d & e & 0 & &\\0 & e & d & e & 0 &\\\vdots&\vdots & \ddots& \ddots&\ddots &\vdots\\0 & & & e & d & e\\0 & & &  & e & d\end{matrix}\right] \left[\begin{matrix}u_1\\u_2\\ \cdots\\\cdots\\\cdots\\u_n\end{matrix}\right] = \left[\begin{matrix}f_1\\f_2\\ \cdots\\\cdots\\\cdots\\f_n\end{matrix}\right]$
 
@@ -41,4 +41,4 @@ Generalized:
 
 
 
-##FLOPS
+## FLOPS
