@@ -1,4 +1,6 @@
 # Project 1 b)
+######General algorithm
+
 We have a linear set of equations $\mathbf{Av = d}$
 
 In the general case, we can express any tridiagonal matrix
@@ -60,7 +62,7 @@ In the $4 \times 4$  case you will get
 $\mathbf{A}=\left[\begin{matrix}b_1 & c_1 & 0 & 0 \\a_2 & b_2 & c_2 & 0 &\\0 & a_3 &b_3 & c_3 &\\ 0 & 0 & a_4 & b_4\end{matrix}\right]\left
 [\begin{matrix}u_1\\u_2\\u_3\\u_4\end{matrix}\right] = \left[\begin{matrix}f_1\\f_2\\f_3\\f_4\end{matrix}\right]$
 
-##Forward substitution
+#######Forward substitution
 
 If you apply Gaussian elimination by $\textrm{II}- \frac{a_2\cdot \textrm{I}}{b_1}$ you will get
 
@@ -91,7 +93,7 @@ From the elimination you can notice a pattern which can be generalized as
 $\tilde b_i = b_i - \frac{a_i c_{i-1}}{\tilde b_i}\,\, \textrm{and}\,\,\tilde f_i = f_i - \frac{a_i f_{i-1}}{\tilde b_i}$
 
 
-##Backward substitution
+#######Backward substitution
 $\\
 \tilde b_1u_1+c_1u_2 =\tilde f_1\\
 \tilde b_2u_2+c_2u_3=\tilde f_2\\
@@ -111,3 +113,6 @@ In general
 $\\
 u_{i-1} = \frac{\tilde f_{i-1} - c_{i-1}u_i}{\tilde b_{i-1}}\\
 \\$
+
+
+######Precise number of floating point operations
