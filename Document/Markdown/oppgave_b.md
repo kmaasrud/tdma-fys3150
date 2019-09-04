@@ -30,12 +30,12 @@ a_4u_3+b_4u_4 = f_4$
 
 Then we set
 
-$\tilde b_2 = b_2u_2-\frac{a_2c_1u_2}{\tilde b_1} \,\, \textrm{and} \, \tilde f_2 = f_2 - \frac{a_2c_1}{\tilde b_1}. \textrm{For} \, i = 1 \,\textrm{and}\, i = n,\, \tilde b_i = b_i$.
+$\tilde b_2 = b_2-\frac{a_2c_1}{\tilde b_1} \,\, \textrm{and} \, \tilde f_2 = f_2 - \frac{a_2f_1}{\tilde b_1}. \textrm{For} \, i = 1 \,\textrm{and}\, i = n,\, \tilde b_i = b_i$.
 
 which gives
 
-$\tilde b_1u_1+c_1u_2 = f_1\\
-0 + \tilde b_2+c_2u_3-0=\tilde f_2
+$\tilde b_1u_1+c_1u_2 = \tilde f_1\\
+0 + \tilde b_2u_2+c_2u_3=\tilde f_2
 \\a_3u_2+b_3u_3+c_3u_4=f_3\\a_4u_3+b_4u_4 = f_4$
 
 If we apply Gaussian elimination on the rest of the set and assign new variables (tilde) to the "complicated " expressions, you will end up with the following set of linear equations
@@ -46,9 +46,26 @@ $\mathbf{A}=\left[\begin{matrix}b_1 & c_1 & 0 & 0 \\0 & \tilde b_2 & c_2 & 0 &\\
 
 From the elimination you can notice a pattern which can be generalized as
 
-$\tilde b_i = b_i - \frac{a_i c_{i-1}}{\tilde b_i}$
-
-$\tilde f_i = f_i - \frac{a_i f_{i-1}}{\tilde b_i}$
+$\tilde b_i = b_i - \frac{a_i c_{i-1}}{\tilde b_i}\,\, \textrm{and}\,\,\tilde f_i = f_i - \frac{a_i f_{i-1}}{\tilde b_i}$
 
 
 ##Backward substitution
+$\\
+\tilde b_1u_1+c_1u_2 =\tilde f_1\\
+\tilde b_2u_2+c_2u_3=\tilde f_2\\
+\tilde b_3u_3+c_3u_4=\tilde f_3\\
+\tilde b_4u_4 = \tilde f_4\\
+\\$
+
+$\\
+u_4 = \frac{\tilde f_4}{\tilde b_4}\\
+u_3 = \frac{\tilde f_3 - c_3u_4}{\tilde b_3} \\
+u_2 = \frac{\tilde f_2 - c_2u_3}{\tilde b_2}\\
+u_1 = \frac{\tilde f_1 - c_1u_2}{\tilde b_1}\\
+\\$
+
+In general
+
+$\\
+u_{i-1} = \frac{\tilde f_{i-1} - c_{i-1}u_i}{\tilde b_{i-1}}\\
+\\$
