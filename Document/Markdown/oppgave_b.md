@@ -1,5 +1,5 @@
 # Project 1 b)
-######General algorithm
+## General algorithm
 
 We have a linear set of equations $\mathbf{Av = d}$
 
