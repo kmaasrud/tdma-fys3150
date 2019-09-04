@@ -34,7 +34,7 @@ $\tilde b_2 = b_2-\frac{a_2c_1}{\tilde b_1} \,\, \textrm{and} \, \tilde f_2 = f_
 
 which gives
 
-$\tilde b_1u_1+c_1u_2 = \tilde f_1\\
+$b_1u_1+c_1u_2 =  f_1\\
 0 + \tilde b_2u_2+c_2u_3=\tilde f_2
 \\a_3u_2+b_3u_3+c_3u_4=f_3\\a_4u_3+b_4u_4 = f_4$
 
