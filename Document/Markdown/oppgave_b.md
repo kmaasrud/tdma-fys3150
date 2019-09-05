@@ -90,7 +90,7 @@ $\mathbf{A}=\left[\begin{matrix}b_1 & c_1 & 0 & 0 \\0 & \tilde b_2 & c_2 & 0 &\\
 
 From the elimination you can notice a pattern which can be generalized as
 
-$\tilde b_i = b_i - \frac{a_i c_{i-1}}{\tilde b_i}\,\, \textrm{and}\,\,\tilde f_i = f_i - \frac{a_i f_{i-1}}{\tilde b_i}$
+$\tilde b_i = b_i - \frac{a_i c_{i-1}}{\tilde b_{i-1}}\,\, \textrm{and}\,\,\tilde f_i = f_i - \frac{a_i f_{i-1}}{\tilde b_{i-1}}$
 
 
 ##Backward substitution_Anna
@@ -111,7 +111,7 @@ u_1 = \frac{\tilde f_1 - c_1u_2}{\tilde b_1}\\
 In general
 
 $\\
-u_{i-1} = \frac{\tilde f_{i-1} - c_{i-1}u_i}{\tilde b_{i-1}}\\
+u_{i-1} = \frac{\tilde f_{i-1} - c_{i-1}u_i}{\tilde b_i}\\
 \\$
 
 
