@@ -27,6 +27,10 @@ To solve our equations  we used Gaussian elimination as well as forward and back
 In Project 1 c) we used our general algorithm to make a special, where the matrix elements along the diagonal where identical
 
 # Introduction
+The purpose of this project is to implement a numerically effective solution of the one-dimensional Poisson equation
+$$-u''(x)=f(x)$$
+
+and to implement this in a programming language of choice (Python, in our case). This will be done using three different approaches - the general Thomas algorithm, a specialized Thomas algorithm and an LU-decomposition - the speed of which is compared.
 
 # Theory and technicalites
 
