@@ -2,15 +2,25 @@
 % 9 September 2019
 % Authors
 
-# Abstract {#abstract .unnumbered}
+# Abstract
+Summary of project.\
+The abstract gives the reader a quick overview of what has been done and the most important results. Try to be to the point and state your main findings.
 
-# Introduction {#introduction .unnumbered}
 
-# Theory and technicalites {#theory-and-technicalites .unnumbered}
+In project 1 a) we solved a one-dimensional Poisson equation with Dirichlet boundary condition by rewriting it as a set of linear equations, **Av=d**.
 
-# Conclusion and perspectives {#conclusion-and-perspectives .unnumbered}
+In Project 1 b) we solved the linear set of equations **Av=d**, where **A** is a tridiagonal matrix, which we expressed as three vectors, $a, b and c$
+To solve our equations  we used Gaussian elimination as well as forward and backward substitution.
 
-# Project 1 a) {#project-1-a .unnumbered}
+In Project 1 c) we used our general algorithm to make a special, where the matrix elements along the diagonal where identical
+
+# Introduction
+
+# Theory and technicalites
+
+# Conclusion and perspectives
+
+# Project 1 a)
 We have the discretized version of $u$, $v$, with the boundary conditions $v_{0}=v_{n}=0$:
 
 For $i = 1$
@@ -25,7 +35,7 @@ For $i = n-1$
 
 $$-\frac{v_n+v_{n-2}-2v_{n-1}}{h^2}{} = f_{n-1}$$
 
-If you multiply both sides by $h^2$
+Multiplying both sides by $h^2$ gives
 
 $$-v_2+2v_1-v_0 = h^2\cdot{f_1}$$
 
@@ -47,7 +57,7 @@ $$\mathbf{d}=\left[\begin{matrix}d_{1}\\ d_{2}\\\ d_{3}\\ \vdots \\ d_{n-1}\end{
 
 with $d_{i} = h^2 \cdot f_i$
 
-# Project 1 b) {#project-1-b .unnumbered}
+# Project 1 b)
 We have a linear set of equations $\mathbf{Av = d}$ we want to solve, where $\mathbf{A}$ is tridiagonal.
 
 In the general case, we can express any tridiagonal matrix
@@ -94,6 +104,6 @@ $$v_{i}=\tilde{d}_{i}-\tilde{c}_{i}v_{i+1}$$
 
 This *backwards substitution* gives us the solution $\mathbf{v}$.
 
-# Appendix {#appendix .unnumbered}
+# Appendix
 
-# Bibliography {#bibliography .unnumbered}
+# Bibliography
