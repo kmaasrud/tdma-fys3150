@@ -25,6 +25,10 @@ Thereafter we made a special algorithm in order to reduce the number of floating
 In the last part we computed the relative error for the exact function vs. the computed and how the error developed with increasing floating points. Lastly we compared our results from our previous calculations with a LU- decomposition.
 
 # Introduction
+The purpose of this project is to implement a numerically effective solution of the one-dimensional Poisson equation
+$$-u''(x)=f(x)$$
+
+and to implement this in a programming language of choice (Python, in our case). This will be done using three different approaches - the general Thomas algorithm, a specialized Thomas algorithm and an LU-decomposition - the speed of which is compared.
 
 # Theory and technicalites
 
