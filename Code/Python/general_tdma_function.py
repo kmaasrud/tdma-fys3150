@@ -29,7 +29,7 @@ def tdma(a,b,c,d,u):
 
     u[1:n+1]=v  #inserting the solution of the linear eq. into the final solution, with boundary conditions
 
-n=[10,100,1000]
+n=[10,100,1000,10000,int(1e5),int(1e6)]
 
 for i in n:     #solving for different n's
     h=1/(i+1)
