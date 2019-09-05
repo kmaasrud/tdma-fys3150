@@ -1,6 +1,18 @@
-% Project 1 FYS3150
-% 9 September 2019
-% Authors
+---
+title: Project 1
+author:
+  - Anna Stray Rongve
+  - Amund Midtgard Raniseth
+  - Knut Magnus Aasrud
+date: Mandag 9 September 2019
+header-includes: |
+  \usepackage{fancyhdr}
+  \pagestyle{fancy}
+  \fancyhf{}
+  \rhead{Project 1}
+  \lhead{\leftmark}
+  \rfoot{\thepage}
+---
 
 # Abstract
 Summary of project.\

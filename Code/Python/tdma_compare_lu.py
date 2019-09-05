@@ -50,7 +50,7 @@ def LU(a,b,c,d,u):
 
 
 
-n=[100,1000,10000]
+n=[100,1000,int(1e4)]
 
 for i in n:     #solving for different n's
     h=1/(i+1)

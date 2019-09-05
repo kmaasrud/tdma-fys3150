@@ -41,10 +41,7 @@ for i in range(len(n)):     #solving for different n's
 
     epsilon[i]=np.log10(np.amax(np.absolute((v[2:n[i]-1]-actual_v[2:n[i]-1])/actual_v[2:n[i]-1])))
 
-# print("| Relative error  | Step size      |")
-# print("|-----------------|----------------|")
-# for i in range(len(epsilon)):
-#     print("| "+str(epsilon[i])+" | "+str(np.log10(h[i]))+" |")
-
-plt.plot(np.log10(h),epsilon)
-plt.show()
+print("| Relative error  | log(Step size) |")
+print("|-----------------|----------------|")
+for i in range(len(epsilon)):
+    print("| "+str(epsilon[i])+" | "+str(np.log10(h[i]))+" |")
