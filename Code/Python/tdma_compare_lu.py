@@ -50,7 +50,11 @@ def LU(a,b,c,d,u):
 
 
 
+<<<<<<< HEAD
 n=[10,100,1000]
+=======
+n=[100,1000,int(1e4)]
+>>>>>>> 5bc8ed0124e84f36c121e78637d9ed2e707109c8
 
 for i in n:     #solving for different n's
     h=1/(i+1)
