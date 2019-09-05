@@ -30,47 +30,4 @@ By simplifying our algorithm the number of floating points, FLOPS, decreases fro
 
 The CPU time for the general algorithm:
 
-<<<<<<< HEAD
 The CPU time for special algorithm:
-=======
-
-
-$\\
-2u_1 - u_2 = f_1 \\
-\frac{3}{2}u_2 -u_3 = f_2 + \frac{1}{2}f_1\\
--u_2 + 2u_3 - u_4 = f_3\\
--u_3 + 2u_4 = f_4\\
-\\$
-
-set
-
-$III + \frac{2}{3}\cdot II$
-
-$\\
-2u_1 - u_2 = f_1 \\
-\frac{3}{2}u_2 -u_3 = f_2 + \frac{1}{2}f_1\\
-\frac{4}{3}u_3 - u_4 = f_3 + \frac{2}{3}f_2 + \frac{1}{3}f_1 \\
--u_3 + 2u_4 = f_4\\
-\\$
-
-
-Last but not least ...
-
-$IV + \frac{3}{4}\cdot III$
-
-$\\
-2u_1 - u_2 = f_1 \\
-\frac{3}{2}u_2 -u_3 = f_2 + \frac{1}{2}f_1\\
-\frac{4}{3}u_3 - u_4 = f_3 + \frac{2}{3}f_2 + \frac{1}{3}f_1 \\
-\frac{5}{4}u_4 = f_4 + \frac{3}{4}f_3 + \frac{2}{4}f_2 + \frac{1}{4}f_1\\
-\\$
-
-###Generalized:
-Right hand side
-
-$\mathbf{Au} = x_i \frac {i+1}{i} = x_i\cdot i + x_i$
-
-$\mathbf f =$
-
-## FLOPS
->>>>>>> 02048f09f642aeccc835edbe1dac390ab42bebac
