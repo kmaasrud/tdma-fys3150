@@ -1,10 +1,26 @@
-% Project 1 FYS3150
-% 9 September 2019
-% Authors
+---
+title: Project 1
+author:
+  - Anna Stray Rongve
+  - Amund Midtgard Raniseth
+  - Knut Magnus Aasrud
+date: Mandag 9 September 2019
+header-includes: |
+  \usepackage{fancyhdr}
+  \pagestyle{fancy}
+  \fancyhf{}
+  \rhead{Project 1}
+  \lhead{\leftmark}
+  \rfoot{\thepage}
+---
 
-# Abstract {#abstract .unnumbered}
+# Abstract
 
 # Introduction {#introduction .unnumbered}
+The purpose of this project is to implement a numerically effective solution of the one-dimensional Poisson equation
+$$-u''(x)=f(x)$$
+
+and to implement this in a programming language of choice (Python, in our case). This will be done using three different approaches - the general Thomas algorithm, a specialized Thomas algorithm and an LU-decomposition - the speed of which is compared.
 
 # Theory and technicalites {#theory-and-technicalites .unnumbered}
 
