@@ -19,12 +19,10 @@ Summary of project.\
 The abstract gives the reader a quick overview of what has been done and the most important results. Try to be to the point and state your main findings.
 
 
-In project 1 a) we solved a one-dimensional Poisson equation with Dirichlet boundary condition by rewriting it as a set of linear equations, **Av=d**.
+In this project we have solved a one-dimensional Poisson equation with Dirichlet boundary condition by rewriting it as a set of linear equations, **Av=d**. Then we solved the equations with Guassian elimination, forward- and backward substitution.
+Thereafter we made a special algorithm in order to reduce the number of floating point operations and compared its CPU time with our general algorithm.
 
-In Project 1 b) we solved the linear set of equations **Av=d**, where **A** is a tridiagonal matrix, which we expressed as three vectors, $a, b and c$
-To solve our equations  we used Gaussian elimination as well as forward and backward substitution.
-
-In Project 1 c) we used our general algorithm to make a special, where the matrix elements along the diagonal where identical
+In the last part we computed the relative error for the exact function vs. the computed and how the error developed with increasing floating points. Lastly we compared our results from our previous calculations with a LU- decomposition.
 
 # Introduction
 The purpose of this project is to implement a numerically effective solution of the one-dimensional Poisson equation
