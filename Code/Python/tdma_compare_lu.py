@@ -1,10 +1,11 @@
 import numpy as np
+import scipy.linalg as spla
 import matplotlib.pyplot as plt
 import time
 
-
 def tdma(a,b,c,d,u):
-    n=len(b)    #the final solution (u) is of size n+2 because of the boundary condition.
+    n=len(b)    #the final solution (u) is of size n+2 because of the boundary conditions
+
     c_tilde=np.zeros(n)
     d_tilde=np.zeros(n)
     v=np.zeros(n)   #this represents the vector v, the solution of the linear set of equations Av=d
@@ -25,34 +26,31 @@ def tdma(a,b,c,d,u):
 
     time_spent=time.clock()-start_time
 
-    print("General TDMA, time spent on n = %g is %g seconds" % (n,time_spent))
     u[1:n+1]=v  #inserting the solution of the linear eq. into the final solution, with boundary conditions
 
-def special_tdma(d,u):
-    n=len(d)    #the final solution (u) is of size n+2 because of the boundary conditions
-    c_tilde=np.zeros(n)
-    d_tilde=np.zeros(n)
-    v=np.zeros(n)   #this represents the vector v, the solution of the linear set of equations Av=d
+    print("General TDMA, time spent on n = %g is %g seconds" % (len(u),time_spent))
+    print("-")
+    plt.plot(x,u,label="TDMA, n = %i" %len(u))
 
-    c_tilde[0]=c[0]/b[0]
-    d_tilde[0]=d[0]/b[0]
+def LU(a,b,c,d,u):
+    #Setting up tridiagonal matrix A
+    def tridiag(a,b,c,k1=-1, k2=0, k3=1):
+        return np.diag(a,k1) + np.diag(b,k2) + np.diag(c,k3)
+    A = tridiag(a,b,c)
 
+    u = np.zeros(len(d)+2) #Defining U-array
+    #Solving the LU decomposition of A
     start_time = time.clock()
-    for i in range(1,n-1):  #FORWARD substitution
-        m=1.0/(2+c_tilde[i-1])
-        c_tilde[i]=-m
-        d_tilde[i]=(d[i]+d_tilde[i-1])*m
-
-    v[n-1]=d_tilde[n-1]
-
-    for i in reversed(range(1,n-1)):    #BACKWARD substitution
-        v[i]=d_tilde[i]-c_tilde[i]*v[i+1]
-
+    u[1:-1] = spla.lu_solve(spla.lu_factor(A),d,trans=0)
     time_spent=time.clock()-start_time
-    print("Special TDMA, time spent on n= %g is %g seconds" % (n,time_spent))
-    u[1:n+1]=v  #inserting the solution of the linear eq. into the final solution, with boundary conditions
 
-n=[int(1e2),int(1e3),int(1e4),int(1e5),int(1e6)]
+    plt.plot(x,u,label="LU,      n = %i" %len(u))
+    n = len(u)
+    print("LU-decomposition, time spent on n = %g is %g seconds" % (n,time_spent))
+
+
+
+n=[100,1000,10000]
 
 for i in n:     #solving for different n's
     h=1/(i+1)
@@ -68,15 +66,11 @@ for i in n:     #solving for different n's
     x=np.linspace(0,1,i+2)
     u[1]=55
 
+    LU(a,b,c,d,u)
     tdma(a,b,c,d,u)
-    plt.plot(x,u,label=r'$n=$ '+str(i))
-    special_tdma(d,u)
-    plt.plot(x,u,label=r'$n=$ '+str(i))
-    print("-")
-
+    #plt.plot(x,u,label=r'$n=$ '+str(i))
 
 actual_u=1-(1-np.exp(-10))*x-np.exp(-10*x)  #the analytically found solution
 plt.plot(x,actual_u,label="Analytical")
-
 plt.legend()
-#plt.show()
+plt.show()
