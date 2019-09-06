@@ -1,7 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-def poisson_tdma(d,v):
+def special_tdma(d,v):
     n=len(d)    #the final solution (u) is of size n+2 because of the boundary conditions
 
     c_tilde=np.zeros(n)

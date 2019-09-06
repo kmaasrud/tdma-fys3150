@@ -19,23 +19,29 @@ Summary of project.\
 The abstract gives the reader a quick overview of what has been done and the most important results. Try to be to the point and state your main findings.
 
 
-In this project we have solved a one-dimensional Poisson equation with Dirichlet boundary condition by rewriting it as a set of linear equations, **Av=d**. Then we solved the equations with Guassian elimination, forward- and backward substitution.
+In this project we have solved a one-dimensional Poisson equation with Dirichlet boundary condition by rewriting it as a set of linear equations, **Av=d**. Then we solved the equations utilizing the Thomas algorithm, a special case of Guassian elimination that has two steps - the forward- and backward substitution.
+
 Thereafter we made a special algorithm in order to reduce the number of floating point operations and compared its CPU time with our general algorithm.
 
 In the last part we computed the relative error for the exact function vs. the computed and how the error developed with increasing floating points. Lastly we compared our results from our previous calculations with a LU- decomposition.
 
 # Introduction
-The purpose of this project is to implement a numerically effective solution of the one-dimensional Poisson equation
-$$-u''(x)=f(x)$$
+The purpose of this project is to implement a numerically effective solution of the one-dimensional Poisson equation with Dirichlet boundary conditions
+$$-u''(x)=f(x),\ \ \ u(0)=u(1)=0$$
 
-and to implement this in a programming language of choice (Python, in our case). This will be done using three different approaches - the general Thomas algorithm, a specialized Thomas algorithm and an LU-decomposition - the speed of which is compared.
+and to implement this in a programming language of choice (Python, in our case). This will be done using two different approaches - the general Thomas algorithm and a specialized Thomas algorithm - the speed of which is compared.
+
+Crucially, the step size affects the results of these methods, and this is also put to the test. The methods are put up against the analytical solution and for one of the algorithms, the relative error is calculated for different step sizes. Lastly, our method is compared to one using LU-decomposition.
 
 # Theory and technicalites
+The equation to solve reads as follows
+$$-u''(x)=100e^{-10x}$$
 
-# Conclusion and perspectives
+With the analytical solution
+$$u(x)=1-(1-e^{-10})x-e^{-10x}$$
 
 ## Project 1 a)
-We have the discretized version of $u$, $v$, with the boundary conditions $v_{0}=v_{n}=0$:
+We start by discretizing $u(x)$ to $v_i$, with the boundary conditions $v_{0}=v_{n}=0$:
 
 For $i = 1$
 
@@ -67,9 +73,9 @@ and
 
 $$\mathbf{d}=\left[\begin{matrix}d_{1}\\ d_{2}\\\ d_{3}\\ \vdots \\ d_{n-1}\end{matrix}\right]$$
 
-<!-- Kaller den d fordi det er litt lettere å holde følge down the road -->
-
 with $d_{i} = h^2 \cdot f_i$
+
+We see that $\mathbf{A}$ is a tridiagonal matrix which we can employ the Thomas algorithm (cite lecture notes) on. This is done below.
 
 ## Project 1 b)
 ### General algorithm
@@ -102,7 +108,7 @@ Which gives
 $$(a_{1}v_{1}+b_{2}v_{2}+c_{2}v_{3})b_{1}-(b_{1}v_{1}+c_{1}v_{2})a_{1}=d_{2}b_{1}-d_{1}a_{1}$$
 $$(b_{2}b_{1}-c_{1}a_{1})v_{2}+c_{2}b_{1}v_{3}=d_{2}b_{1}-d_{1}a_{1}.$$
 
-Notice that $v_{1}$ has been eliminated (the first lower diagonal element has been eliminated).
+Notice that $v_{1}$ has been eliminated ($\Leftrightarrow$ the first lower diagonal element has been eliminated).
 
 This can be continued further - to eliminate all the $a_{i}$'s - and is what we call *forward substitution*.
 
@@ -120,16 +126,21 @@ $$v_{i}=\tilde{d}_{i}-\tilde{c}_{i}v_{i+1}$$
 
 This is the *backward substitution* necessary to find the solution.
 
+The whole algorithm runs using $O(n)$ FLOPs, specifically $9n$. This is a major improvement on Gaussian elimination, which requires $O(n^{3})$ FLOPs (cite lecture notes).
+
 ## Project 1 c)
 ### Modified algorithm
 
-In this case we use our general algorithm derived in Project 1 b) and simply replace our variables $a_i, b_i \, \textrm{and}\, c_i \,\textrm{with respectively} -1, 2 \,\,\textrm{and} -1$.
+In the case of the Poisson equation we can use our general algorithm for a tridiagonal matrix, derived above, and simply replace our variables $a_i, b_i \, \textrm{and}\, c_i \,\textrm{with respectively} -1, 2 \,\,\textrm{and} -1$.
 
 $$\\
 \mathbf{A}=\left[\begin{matrix}2 & -1 & 0 & \cdots & \cdots & \cdots\\-1 & 2 & -1 & 0 & &\\0 & -1 & 2 & -1 & 0 &\\\vdots&\vdots & \ddots& \ddots&\ddots &\vdots\\0 & & & -1 & 2 & -1\\0 & & &  & -1 & 2\end{matrix}\right] \left[\begin{matrix}v_1\\v_2\\ \cdots\\\cdots\\\cdots\\v_n\end{matrix}\right] = \left[\begin{matrix}d_1\\d_2\\ \cdots\\\cdots\\\cdots\\d_n\end{matrix}\right]
 \\$$
 
+This translates into a simpler algorithm, were we're able to cut down the number of FLOPs.
+
 ### Forward substitution special case
+Inserting the values of $a_{i}$, $b_{i}$ and $c_{i}$ into the general algorith, we get this:
 $$\\
 \tilde{b}_{i}=1\\
 \tilde{c}_{1}=-\frac{1}{2}\\
@@ -140,29 +151,38 @@ $$
 
 
 ### Backward substitution special case
-In the backward substitution there will not have any differences from the one in Project 1 b), so
+The backward substitution will not be any different from the one in Project 1 b)
 
 $$\\
 v_n = \tilde d_i\\
 v_{i}=\tilde{d}_{i}-\tilde{c}_{i}v_{i+1}
 \\$$
 
-For the general and special algorithm the flops will run as O(n).
+This also runs using O(n) FLOPs, but by simplifying our algorithm the number of FLOPs decreases from **9n** to **6n**.
 
-By simplifying our algorithm the number of floating points, FLOPS, decreases from **9n** to **6n**.
+### Relative error
+
+
+# Conclusion and perspectives
 
 # Results
-## Project 1 d)
-The program (found in the appendix) gives this result:
+## Project 1 b)
 
-    | Relative error  | log(Step size) |
-    |-----------------|----------------|
-    | -0.545362450619 | -2.00432137378 |
-    | -0.483273092184 | -3.00043407748 |
-    | -0.477730509812 | -4.00004342728 |
-    | -0.477182121231 | -5.00000434292 |
-    | -0.477128070817 | -6.00000043429 |
-    | -0.477119426687 | -7.00000004343 |
+## Project 1 c)
+
+## Project 1 d)
+The program (`general-vs-special-tdma-test.py`) gives this result:
+
+| Relative error  | $log_{10}(\mathbf{Step\ size})$ |
+|-----------------|----------------|
+| -0.545362450619 | -2.00432137378 |
+| -0.483273092184 | -3.00043407748 |
+| -0.477730509812 | -4.00004342728 |
+| -0.477182121231 | -5.00000434292 |
+| -0.477128070817 | -6.00000043429 |
+| -0.477119426687 | -7.00000004343 |
+
+## Project 1 e)
 
 # Appendix
 [Source Code](https://github.com/kmaasrud/Project-1/tree/master/Code/Python)
