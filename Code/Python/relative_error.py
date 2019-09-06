@@ -1,7 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-def special_tdma(d,v):
+def poisson_tdma(d,v):
     n=len(d)    #the final solution (u) is of size n+2 because of the boundary conditions
 
     c_tilde=np.zeros(n)
@@ -23,25 +23,27 @@ def special_tdma(d,v):
 
     v[1:n+1]=v_temp  #inserting the solution of the linear eq. into the final solution, with boundary conditions
 
-n=np.array([int(1e2),int(1e3),int(1e4),int(1e5),int(1e6),int(1e7)])
+n=np.array([int(1e2),int(1e3),int(1e4),int(1e5),int(1e6)])
 h=1/(n+1)
 epsilon=np.zeros(len(n))
 
 for i in range(len(n)):     #solving for different n's
-    d=np.linspace(0,1,n[i])
-    d=h[i]**2*100*np.exp(-10*d)
-    v=np.zeros(n[i]+2)
     x=np.linspace(0,1,n[i]+2)
+    d=h[i]**2*100*np.exp(-10*x[1:-1])
+    v=np.zeros(n[i]+2)
     v[1]=55
 
     x=np.linspace(0,1,n[i]+2)
     actual_v=1-(1-np.exp(-10))*x-np.exp(-10*x)  #the analytically found solution
 
     poisson_tdma(d,v)
-
-    epsilon[i]=np.log10(np.amax(np.absolute((v[2:n[i]-1]-actual_v[2:n[i]-1])/actual_v[2:n[i]-1])))
+    print(v.shape, v[-1], v[-2])
+    epsilon[i]=np.log10(np.max(np.absolute((v[2:-1]-actual_v[2:-1])/actual_v[2:-1])))
 
 print("| Relative error  | log(Step size) |")
 print("|-----------------|----------------|")
 for i in range(len(epsilon)):
     print("| "+str(epsilon[i])+" | "+str(np.log10(h[i]))+" |")
+
+plt.plot(np.log10(h), epsilon)
+plt.show()
