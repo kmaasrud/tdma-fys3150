@@ -164,6 +164,9 @@ This also runs using O(n) FLOPs, but by simplifying our algorithm the number of 
 ### Relative error
 
 
+## Project 1 e)
+To compare the TDMA function with an LU decomposition we first put both functions in one code to be ran at the same time. For the LU decomposition we decided to use _lu_factor_ and _lu_decompose_ from the _scipy.linalg_ library. The execution time was counted with _clock()_ from the _time_ library in Python. The counting  started at the start of the recursive algorithm, and were stopped immediately after.
+
 # Conclusion and perspectives
 
 # Results
@@ -178,24 +181,24 @@ Its quite clear that a smaller step size correlates to higher accuracy for these
 The program `special_tdma_function.py` is based on our specialized Thomas algorithm. In `General-vs-special-tdma-test.py`, we compare the time spent over the general and special algorithm and print them to the console at different step sizes ($n$-values). The results are:
 
     General TDMA, time spent on n = 100 is 0.000195 seconds
-    Special TDMA, time spent on n= 100 is 0.0002599 seconds
+    Special TDMA, time spent on n = 100 is 0.0002599 seconds
 
 
     General TDMA, time spent on n = 1000 is 0.0046473 seconds
-    Special TDMA, time spent on n= 1000 is 0.003015 seconds
+    Special TDMA, time spent on n = 1000 is 0.003015 seconds
 
 
     General TDMA, time spent on n = 10000 is 0.0573864 seconds
-    Special TDMA, time spent on n= 10000 is 0.0366101 seconds
+    Special TDMA, time spent on n = 10000 is 0.0366101 seconds
 
 
     General TDMA, time spent on n = 100000 is 0.307781 seconds
-    Special TDMA, time spent on n= 100000 is 0.216879 seconds
+    Special TDMA, time spent on n = 100000 is 0.216879 seconds
 
     General TDMA, time spent on n = 1e+06 is 2.97735 seconds
-    Special TDMA, time spent on n= 1e+06 is 2.56285 seconds
+    Special TDMA, time spent on n = 1e+06 is 2.56285 seconds
 
-Its not fully apparent at small matrix sizes, but once they get big, the reduction in FLOPs makes a difference.
+Its not fully apparent at small matrix sizes, but once they get big, the reduction in FLOPs makes a difference. This is because the overhead in the _scipy.linalg.lu_solve_ function is relatively big for small $n$'s.
 
 ## Project 1 d)
 The program (`relative_error.py`) gives this result:
@@ -210,6 +213,18 @@ The program (`relative_error.py`) gives this result:
 | -0.477119426687 | -7.00000004343 |
 
 ## Project 1 e)
+The code is available in _Project-1/Code/Python/tdma_compare_lu.py_ in our github repository.
+
+|          |      TDMA      |LU decomposition |
+|----------|-------------:|------:|
+| $n=  10$  |  $0.000045s$ | $0.000151s$ |
+| $n= 100$  |    $0.002442s$   |  $0.002045s$ |
+| $n= 1000$ | $0.026847s$ |    $0.131573s$|
+
+The table is a bit confusing since for $n=100$ the LU decomposition is faster than the TDMA method, but the general trend is that the TDMA method is wildly superior.
+
+If the LU decomposition is run with a $10^5\times 10^5$ matrix, we quickly run out of RAM. This is because every matrix element takes up 8Bytes, which in our case adds up to 80Gigabytes.
+
 
 # Appendix
 [Source Code](https://github.com/kmaasrud/Project-1/tree/master/Code/Python)
