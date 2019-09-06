@@ -37,7 +37,7 @@ for i in range(len(n)):     #solving for different n's
     x=np.linspace(0,1,n[i]+2)
     actual_v=1-(1-np.exp(-10))*x-np.exp(-10*x)  #the analytically found solution
 
-    poisson_tdma(d,v)
+    special_tdma(d,v)
 
     epsilon[i]=np.log10(np.amax(np.absolute((v[2:n[i]-1]-actual_v[2:n[i]-1])/actual_v[2:n[i]-1])))
 

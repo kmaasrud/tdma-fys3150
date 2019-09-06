@@ -9,7 +9,6 @@ def tdma(a,b,c,d,v):
     d_tilde=np.zeros(n)
     v_temp=np.zeros(n)   #this represents the vector v, the solution of the linear set of equations Av=d
 
-    start_time = time.clock()
     c_tilde[0]=c[0]/b[0]
     d_tilde[0]=d[0]/b[0]
 
@@ -23,13 +22,9 @@ def tdma(a,b,c,d,v):
     for i in reversed(range(1,n-1)):    #BACKWARD substitution
         v_temp[i]=d_tilde[i]-c_tilde[i]*v_temp[i+1]
 
-    time_spent=time.clock()-start_time
-
-    print("General TDMA, time spent on n = %g is %g seconds" % (n,time_spent))
-
     v[1:n+1]=v_temp  #inserting the solution of the linear eq. into the final solution, with boundary conditions
 
-n=[10,100,1000,10000,int(1e5),int(1e6)]
+n=[10,100,1000]
 
 for i in n:     #solving for different n's
     h=1/(i+1)
@@ -52,4 +47,7 @@ for i in n:     #solving for different n's
 actual_v=1-(1-np.exp(-10))*x-np.exp(-10*x)  #the analytically found solution
 plt.plot(x,actual_v,label="Analytical")
 
+plt.xlabel("x")
+plt.ylabel("u(x) and v")
 plt.legend()
+plt.savefig("Document\Images\general_tdma_plot.png")

@@ -167,6 +167,11 @@ This also runs using O(n) FLOPs, but by simplifying our algorithm the number of 
 
 # Results
 ## Project 1 b)
+The program (`general_tdma_function.py`) is based on the general Thomas algorithm - solving our sample Poisson equation and plotting it at different step sizes. It gives this result:
+
+![**Figure 1**: General TDMA solution for $n=10,100,1000$, compared to the analytical solution.](..\Images\general_tdma_plot.png)
+
+Its quite clear that a smaller step size correlates to higher accuracy for these selections of step sizes.
 
 ## Project 1 c)
 
