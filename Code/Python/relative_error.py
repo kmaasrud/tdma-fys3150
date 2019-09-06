@@ -23,7 +23,7 @@ def poisson_tdma(d,v):
 
     v[1:n+1]=v_temp  #inserting the solution of the linear eq. into the final solution, with boundary conditions
 
-n = np.rint(np.logspace(1,7,10))
+n = np.rint(np.logspace(1,7,15))
 #n = np.array([1e1,1e2,1e3,1e4,1e5,1e6])
 epsilon=np.zeros(len(n))
 h=1/(n+1)
