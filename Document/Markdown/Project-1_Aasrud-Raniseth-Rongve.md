@@ -161,8 +161,12 @@ v_{i}=\tilde{d}_{i}-\tilde{c}_{i}v_{i+1}
 
 This also runs using O(n) FLOPs, but by simplifying our algorithm the number of FLOPs decreases from **9n** to **6n**.
 
+## Project 1 d)
 ### Relative error
+The special Thomas algorithm is compared against the analytical solution and the relative error is calculated. This is done using this formula:
+$$\epsilon_{i}=\log_{10}\left(\left|\frac{v_{i}-u_{i}}{u_{i}}\right|\right)$$
 
+where $v$ is the numerical solution and $u$ is the analytical solution. For each step size, the maximum value of the $\epsilon_{i}$'s is found and stored.
 
 ## Project 1 e)
 To compare the TDMA function with an LU decomposition we first put both functions in one code to be ran at the same time. For the LU decomposition we decided to use _lu_factor_ and _lu_decompose_ from the _scipy.linalg_ library. The execution time was counted with _clock()_ from the _time_ library in Python. The counting  started at the start of the recursive algorithm, and were stopped immediately after.
@@ -201,29 +205,29 @@ The program `special_tdma_function.py` is based on our specialized Thomas algori
 Its not fully apparent at small matrix sizes, but once they get big, the reduction in FLOPs makes a difference. This is because the overhead in the _scipy.linalg.lu_solve_ function is relatively big for small $n$'s.
 
 ## Project 1 d)
-The program (`relative_error.py`) gives this result:
+The program (`relative_error.py`) gives these results:
 
 ![**Figure 2**: log10($\epsilon$) vs log10(h)](..\Images\relative_error.png)
 
-| Relative error  | log(Step size) |
+| Relative error  | $log_{10}(\text{Step size})$ |
 |-----------------|----------------|
-| -1.179697782181123 | -1.041392685158225 |
-| -1.97626186756762 | -1.4471580313422192 |
-| -2.806234336204043 | -1.863322860120456 |
-| -3.6548424003077447 | -2.287801729930226 |
-| -4.5095240233346425 | -2.7151673578484576 |
-| -5.365211937857104 | -3.143014800254095 |
-| -6.222366463482809 | -3.571592383361307 |
-| -7.079285134039305 | -4.000043427276863 |
-| -7.93346055078429 | -4.428588297668614 |
-| -8.65847844870895 | -4.857151502687493 |
-| -8.480115168181095 | -5.285717045991711 |
-| -6.4173203251240185 | -5.714286160427356 |
-| -6.000981018219917 | -6.14285730089358 |
-| -5.914135318231038 | -6.57142872052209 |
-| -5.525230018275306 | -7.000000043429446 |
+| -1.17969778218 | -1.04139268516 |
+| -1.97626186757 | -1.44715803134 |
+| -2.8062343362 | -1.86332286012 |
+| -3.65484240031 | -2.28780172993 |
+| -4.50952402333 | -2.71516735785 |
+| -5.36521193786 | -3.14301480025 |
+| -6.22236646348 | -3.57159238336 |
+| -7.07928513404 | -4.00004342728 |
+| -7.93346055078 | -4.42858829767 |
+| -8.65847844871 | -4.85715150269 |
+| -8.48011516818 | -5.28571704599 |
+| -6.41732032512 | -5.71428616043 |
+| -6.00098101822 | -6.14285730089 |
+| -5.91413531823 | -6.57142872052 |
+| -5.52523001828 | -7.00000004343 |
 
-Where we see that when the log10 of stepsize goes below -5, we are losing presicion fast.
+We see that when the $\log_{10}$ of the step size goes below -5, we are losing precision fast.
 
 
 ## Project 1 e)

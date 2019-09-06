@@ -32,7 +32,7 @@ print(n)
 for i in range(len(n)):     #solving for different n's
     x=np.linspace(0,1,n[i]+2)
     d=h[i]**2*100*np.exp(-10*x[1:-1])
-    v=np.zeros(int(n[i])+2)
+    v=np.zeros(int(n[i]+2))
     v[1]=55
 
     actual_v=1-(1-np.exp(-10))*x-np.exp(-10*x)  #the analytically found solution
@@ -46,8 +46,8 @@ print("|-----------------|----------------|")
 for i in range(len(epsilon)):
     print("| "+str(epsilon[i])+" | "+str(np.log10(h[i]))+" |")
 
-plt.title("Log10 av feilen mot log10 av steglengden")
+plt.title("Log10 of the error againts log10 of the step size")
 plt.xlabel("log10(h)")
 plt.ylabel("log10($\epsilon_i$)")
 plt.plot(np.log10(h), epsilon)
-plt.show()
+plt.savefig("relative_error.png")
