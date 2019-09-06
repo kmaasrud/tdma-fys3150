@@ -45,3 +45,6 @@ print("| Relative error  | log(Step size) |")
 print("|-----------------|----------------|")
 for i in range(len(epsilon)):
     print("| "+str(epsilon[i])+" | "+str(np.log10(h[i]))+" |")
+    plt.plot(x, epsilon[i])
+
+plt.draw()
