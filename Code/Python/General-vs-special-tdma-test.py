@@ -69,13 +69,14 @@ for i in n:     #solving for different n's
     v[1]=55
 
     tdma(a,b,c,d,v)
-    plt.plot(x,v,label=r'$n=$ '+str(i))
+    #plt.plot(x,v,label=r'$n=$ '+str(i))
     special_tdma(d,v)
-    plt.plot(x,v,label=r'$n=$ '+str(i))
+    #plt.plot(x,v,label=r'$n=$ '+str(i))
+    print("\n")
 
 
-actual_v=1-(1-np.exp(-10))*x-np.exp(-10*x)  #the analytically found solution
-plt.plot(x,actual_v,label="Analytical")
+#actual_v=1-(1-np.exp(-10))*x-np.exp(-10*x)  #the analytically found solution
+#plt.plot(x,actual_v,label="Analytical")
 
-plt.legend()
+#plt.legend()
 #plt.show()

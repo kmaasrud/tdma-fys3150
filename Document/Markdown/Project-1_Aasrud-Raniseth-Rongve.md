@@ -13,6 +13,7 @@ header-includes: |
   \lhead{\leftmark}
   \rfoot{\thepage}
 ---
+The programs referenced in this article are in a repository linked in the appendix.
 
 # Abstract
 Summary of project.\
@@ -167,13 +168,39 @@ This also runs using O(n) FLOPs, but by simplifying our algorithm the number of 
 
 # Results
 ## Project 1 b)
+The program `general_tdma_function.py` is based on the general Thomas algorithm - solving our sample Poisson equation and plotting it at different step sizes. It gives this result:
+
+![**Figure 1**: General TDMA solution for $n=10,100,1000$, compared to the analytical solution.](..\Images\general_tdma_plot.png)
+
+Its quite clear that a smaller step size correlates to higher accuracy for these selections of step sizes.
 
 ## Project 1 c)
+The program `special_tdma_function.py` is based on our specialized Thomas algorithm. In `General-vs-special-tdma-test.py`, we compare the time spent over the general and special algorithm and print them to the console at different step sizes ($n$-values). The results are:
+
+    General TDMA, time spent on n = 100 is 0.000195 seconds
+    Special TDMA, time spent on n= 100 is 0.0002599 seconds
+
+
+    General TDMA, time spent on n = 1000 is 0.0046473 seconds
+    Special TDMA, time spent on n= 1000 is 0.003015 seconds
+
+
+    General TDMA, time spent on n = 10000 is 0.0573864 seconds
+    Special TDMA, time spent on n= 10000 is 0.0366101 seconds
+
+
+    General TDMA, time spent on n = 100000 is 0.307781 seconds
+    Special TDMA, time spent on n= 100000 is 0.216879 seconds
+
+    General TDMA, time spent on n = 1e+06 is 2.97735 seconds
+    Special TDMA, time spent on n= 1e+06 is 2.56285 seconds
+
+Its not fully apparent at small matrix sizes, but once they get big, the reduction in FLOPs makes a difference.
 
 ## Project 1 d)
-The program (`general-vs-special-tdma-test.py`) gives this result:
+The program (`relative_error.py`) gives this result:
 
-| Relative error  | $log_{10}(\mathbf{Step\ size})$ |
+| Relative error  | $log_{10}(\text{Step size})$ |
 |-----------------|----------------|
 | -0.545362450619 | -2.00432137378 |
 | -0.483273092184 | -3.00043407748 |
