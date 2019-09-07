@@ -129,7 +129,7 @@ $$v_{i}=\tilde{d}_{i}-\tilde{c}_{i}v_{i+1}$$
 
 This is the *backward substitution* necessary to find the solution.
 
-The whole algorithm runs using $O(n)$ FLOPs, specifically $9n$. This is a major improvement on Gaussian elimination, which requires $O(n^{3})$ FLOPs (cite lecture notes).
+The whole algorithm runs using $O(n)$ FLOPs, specifically $9n$. This is a major improvement on Gaussian elimination, which requires $O(n^{3})$ FLOPs [@Hjorth-Jensen2018].
 
 ## Project 1 c)
 ### Modified algorithm
@@ -172,8 +172,6 @@ where $v$ is the numerical solution and $u$ is the analytical solution. For each
 
 ## Project 1 e)
 To compare the TDMA function with an LU decomposition we first put both functions in one code to be ran at the same time. For the LU decomposition we decided to use _lu_factor_ and _lu_decompose_ from the _scipy.linalg_ library. The execution time was counted with _clock()_ from the _time_ library in Python. The counting  started at the start of the recursive algorithm, and were stopped immediately after.
-
-# Conclusion and perspectives
 
 # Results
 ## Project 1 b)
@@ -245,6 +243,7 @@ The table is a bit confusing since for $n=100$ the LU decomposition is faster th
 
 If the LU decomposition is run with a $10^5\times 10^5$ matrix, we quickly run out of RAM. This is because every matrix element takes up 8Bytes, which in our case adds up to 80Gigabytes.
 
+# Conclusion and perspectives
 
 # Appendix
 [Source Code](https://github.com/kmaasrud/Project-1/tree/master/Code/Python)
