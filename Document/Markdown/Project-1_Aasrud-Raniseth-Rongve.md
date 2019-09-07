@@ -5,6 +5,8 @@ author:
   - Amund Midtgard Raniseth
   - Knut Magnus Aasrud
 date: Mandag 9 September 2019
+bibliography: references.bib
+link-citations: true
 header-includes: |
   \usepackage{fancyhdr}
   \pagestyle{fancy}
@@ -35,48 +37,48 @@ and to implement this in a programming language of choice (Python, in our case).
 Crucially, the step size affects the results of these methods, and this is also put to the test. The methods are put up against the analytical solution and for one of the algorithms, the relative error is calculated for different step sizes. Lastly, our method is compared to one using LU-decomposition.
 
 # Theory and technicalites
-The equation to solve reads as follows
-$$-u''(x)=100e^{-10x}$$
+The Poisson equation we are going to solve reads as follows:
+$$-u''(x)=100e^{-10x},$$
 
-With the analytical solution
-$$u(x)=1-(1-e^{-10})x-e^{-10x}$$
+with the analytical solution:
+$$u(x)=1-(1-e^{-10})x-e^{-10x}.$$
 
 ## Project 1 a)
 We start by discretizing $u(x)$ to $v_i$, with the boundary conditions $v_{0}=v_{n}=0$:
 
-For $i = 1$
+For $i = 1$,
 
-$$-\frac{v_2+v_0-2v_1}{h^2} = f_1$$
+$$-\frac{v_2+v_0-2v_1}{h^2} = f_1.$$
 
-For $i = 2$
+For $i = 2$,
 
-$$-\frac{v_3+v_1-2v_2}{h^2}{} = f_2$$
+$$-\frac{v_3+v_1-2v_2}{h^2}{} = f_2.$$
 
-For $i = n-1$
+For $i = n-1$,
 
-$$-\frac{v_n+v_{n-2}-2v_{n-1}}{h^2}{} = f_{n-1}$$
+$$-\frac{v_n+v_{n-2}-2v_{n-1}}{h^2}{} = f_{n-1}.$$
 
 Multiplying both sides by $h^2$ gives
 
-$$-v_2+2v_1-v_0 = h^2\cdot{f_1}$$
+$$-v_2+2v_1-v_0 = h^2\cdot{f_1},$$
 
-$$-v_3+2v_2-v_1 = {h^2}\cdot{f_2}$$
+$$-v_3+2v_2-v_1 = {h^2}\cdot{f_2},$$
 
-$$-v_n+2v_{n-1}-v_{n-2} = {h^2}\cdot{f_{n-1}}$$
+$$-v_n+2v_{n-1}-v_{n-2} = {h^2}\cdot{f_{n-1}}.$$
 
 Which you can rewrite as a linear set of equations $\mathbf{A}\mathbf{v}=\mathbf{d}$ where
 
-$$\mathbf{A}=\left[\begin{matrix}2 & -1 & 0 & \dots & \dots & 0\\-1 & 2 & -1 & 0 & \ddots & \vdots \\0 & -1 &2 & -1 & 0 & \vdots \\ \vdots & \vdots & \ddots& \ddots & \ddots & \vdots\\0 & \dots & \dots & -1 & 2 & -1\\0 & \dots & \dots & 0 & -1 & 2\end{matrix}\right]$$
+$$\mathbf{A}=\left[\begin{matrix}2 & -1 & 0 & \dots & \dots & 0\\-1 & 2 & -1 & 0 & \ddots & \vdots \\0 & -1 &2 & -1 & 0 & \vdots \\ \vdots & \vdots & \ddots& \ddots & \ddots & \vdots\\0 & \dots & \dots & -1 & 2 & -1\\0 & \dots & \dots & 0 & -1 & 2\end{matrix}\right],$$
 
-$$\mathbf{v}=\left[\begin{matrix}v_{1}\\v_{2}\\v_{3}\\ \vdots \\ v_{n-1}\end{matrix}\right]$$
+$$\mathbf{v}=\left[\begin{matrix}v_{1}\\v_{2}\\v_{3}\\ \vdots \\ v_{n-1}\end{matrix}\right],$$
 
 and
 
-$$\mathbf{d}=\left[\begin{matrix}d_{1}\\ d_{2}\\\ d_{3}\\ \vdots \\ d_{n-1}\end{matrix}\right]$$
+$$\mathbf{d}=\left[\begin{matrix}d_{1}\\ d_{2}\\\ d_{3}\\ \vdots \\ d_{n-1}\end{matrix}\right],$$
 
-with $d_{i} = h^2 \cdot f_i$
+with $d_{i} = h^2 \cdot f_i$.
 
-We see that $\mathbf{A}$ is a tridiagonal matrix which we can employ the Thomas algorithm (cite lecture notes) on. This is done below.
+We see that $\mathbf{A}$ is a tridiagonal matrix which we can employ the Thomas algorithm [@Hjorth-Jensen2018] on. This is done below.
 
 ## Project 1 b)
 ### General algorithm
@@ -247,4 +249,5 @@ If the LU decomposition is run with a $10^5\times 10^5$ matrix, we quickly run o
 # Appendix
 [Source Code](https://github.com/kmaasrud/Project-1/tree/master/Code/Python)
 
-# Bibliography
+# References
+::: {refs}
