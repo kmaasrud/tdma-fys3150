@@ -36,15 +36,10 @@ for i in range(len(n)):     #solving for different n's
     x=np.linspace(0,1,n[i]+2)
     actual_v=1-(1-np.exp(-10))*x-np.exp(-10*x)  #the analytically found solution
 
-<<<<<<< HEAD
     poisson_tdma(d,v)
+
     print(v.shape, v[-1], v[-2])
     epsilon[i]=np.log10(np.max(np.absolute((v[2:-1]-actual_v[2:-1])/actual_v[2:-1])))
-=======
-    special_tdma(d,v)
-
-    epsilon[i]=np.log10(np.amax(np.absolute((v[2:n[i]-1]-actual_v[2:n[i]-1])/actual_v[2:n[i]-1])))
->>>>>>> fcaf57fa70a6a27d0d4baea895a374774efb249e
 
 print("| Relative error  | log(Step size) |")
 print("|-----------------|----------------|")
