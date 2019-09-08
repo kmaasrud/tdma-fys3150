@@ -55,7 +55,7 @@ for n in n:
     b = np.zeros(n); b[:] = 2
     c = np.zeros(n); c[:] = -1
     v = np.zeros(n)
-    h = 1/(n+1)
+    h = 1/(n+1)  #stepsize
     svar = fbsub(a,b,c,v,h**2*func(x))
 #print(a,b,c,v,x)
 

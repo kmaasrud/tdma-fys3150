@@ -18,17 +18,19 @@ header-includes: |
 The programs referenced in this article are in a repository linked in the appendix.
 
 # Abstract
-In this project we have solved a one-dimensional Poisson equation with Dirichlet boundary conditions by rewriting it as a set of linear equations  **Av=d** and under the following assumptions:
+In this project we want to solve a one-dimensional Poisson equation with Dirichlet boundary conditions numerically in order to study the importance of stepsize and floating points operations, FLOPs.
+
+We approached this problem by rewriting the equation as a set of linear equations  **Av=d** under the following assumptions:
 
 + A is $n\times n$ nonsingular
 + $\mathbf{Ax = b }$ has a unique solution **x** for every **b** in $\mathbf R^n$
 
-Then we solved the equations utilizing the Thomas algorithm, a special case of Gaussian elimination that has two steps - the forward- and backward substitution. Thereafter we made a special algorithm in order to reduce the number of FLOPs.
-
-Thereafter we specialized the algorithm by choosing a specific matrix $\mathbf A$ in order to reduce the number of FLOPs and compared its CPU time with our general algorithm.
+Then we solved the equations utilizing the Thomas algorithm, a special case of Gaussian elimination that has two steps - the forward- and backward substitution. Thereafter we specialized our algorithm by choosing a specific matrix $\mathbf A$ in order to reduce the number of FLOPs and compared its CPU time with our general algorithm.
 
 To measure deviation between the analytical($u(x)$) and numerical solution , the relative error was calculated by
 $$\epsilon_{i}=\log_{10}\left(\left|\frac{v_{i}-u_{i}}{u_{i}}\right|\right)$$
+
+The stepsize in our algorithm varies between 
 
 By studying the number of floating point operations, FLOPs, we could predict which method would be the most efficient(in measured CPU time). However we realised quickly that computer-factors would play a big roll when increasing the size of the matrix(n).
 
@@ -249,6 +251,7 @@ The table is a bit confusing since for $n=100$ the LU decomposition is faster th
 If the LU decomposition is run with a $10^5\times 10^5$ matrix, we quickly run out of RAM. This is because every matrix element takes up 8Bytes, which in our case adds up to 80Gigabytes.
 
 # Conclusion and perspectives
+
 
 # Appendix
 [Source Code](https://github.com/kmaasrud/Project-1/tree/master/Code/Python)
