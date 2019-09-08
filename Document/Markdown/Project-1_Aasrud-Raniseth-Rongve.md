@@ -18,15 +18,17 @@ header-includes: |
 The programs referenced in this article are in a repository linked in the appendix.
 
 # Abstract
-Summary of project.\
-The abstract gives the reader a quick overview of what has been done and the most important results. Try to be to the point and state your main findings.
+In this project we have studied different methods for solving a set of linear equations. First by generalizing, then looking at a special case and lastly we used LU-decomposition. We calculated the relative error to a analytical equation to compare the different methods.
 
+By studying the number of floating point operations, FLOPs, we could predict which method would be the most efficient(measured CPU time). However we realised quickly that computer-factors would play a big roll when increasing the size of the matrix(n)
 
+¨¨¨¨¨¨¨\
 In this project we have solved a one-dimensional Poisson equation with Dirichlet boundary condition by rewriting it as a set of linear equations, **Av=d**. Then we solved the equations utilizing the Thomas algorithm, a special case of Guassian elimination that has two steps - the forward- and backward substitution.
 
 Thereafter we made a special algorithm in order to reduce the number of floating point operations and compared its CPU time with our general algorithm.
 
 In the last part we computed the relative error for the exact function vs. the computed and how the error developed with increasing floating points. Lastly we compared our results from our previous calculations with a LU- decomposition.
+''
 
 # Introduction
 The purpose of this project is to implement a numerically effective solution of the one-dimensional Poisson equation with Dirichlet boundary conditions
