@@ -8,6 +8,6 @@ The code is available in _Project-1/Code/Python/tdma_compare_lu.py_ in our githu
 | $n= 100$  |    $0.002442s$   |  $0.002045s$ |
 | $n= 1000$ | $0.026847s$ |    $0.131573s$|
 
-The table is a bit confusing since for $n=100$ the LU decomposition is faster than the TDMA method, but the general trend is that the TDMA method is wildly fast.
+The table is a bit confusing since for $n=100$ the LU decomposition is faster than the TDMA method, but the general trend is that the TDMA method is wildly superior.
 
 If the LU decomposition is run with a $10^5\times 10^5$ matrix, we quickly run out of RAM. This is because every matrix element takes up 8Bytes, which in our case adds up to 80Gigabytes.
