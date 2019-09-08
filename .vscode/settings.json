@@ -1,0 +1,6 @@
+{
+    "editor.fontSize": 15,
+    "markdown-preview-enhanced.mermaidTheme": "dark",
+    "markdown-preview-enhanced.previewTheme": "none.css",
+    "git.autofetch": true
+}
