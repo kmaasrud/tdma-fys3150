@@ -20,6 +20,7 @@ The programs referenced in this article are in a repository linked in the append
 # Abstract
 In this project we have solved a one-dimensional Poisson equation with Dirichlet boundary conditions by rewriting it as a set of linear equations  **Av=d** and under the following assumptions:
 
+<<<<<<< HEAD
 + A is $n\times n$ nonsingular
 + $\mathbf{Ax = b }$ has a unique solution **x** for every **b** in $\mathbf R^n$
 
@@ -31,6 +32,10 @@ To measure deviation between the analytical($u(x)$) and numerical solution , the
 $$\epsilon_{i}=\log_{10}\left(\left|\frac{v_{i}-u_{i}}{u_{i}}\right|\right)$$
 
 By studying the number of floating point operations, FLOPs, we could predict which method would be the most efficient(in measured CPU time). However we realised quickly that computer-factors would play a big roll when increasing the size of the matrix(n).
+=======
+In this project we have solved a one-dimensional Poisson equation with Dirichlet boundary condition by rewriting it as a set of linear equations, **Av=d**. Then we solved the equations utilizing the Thomas algorithm, a special case of Guassian elimination that has two steps - the forward- and backward substitution.
+
+>>>>>>> c64afc756e7f5c0a186dbef3b5fd2cf05d7930db
 
 
 # Introduction
