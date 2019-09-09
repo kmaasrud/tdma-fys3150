@@ -49,5 +49,6 @@ plt.plot(x,actual_v,label="Analytical")
 
 plt.xlabel("x")
 plt.ylabel("u(x) and v")
+plt.title("General TDMA solver v Analytical solution")
 plt.legend()
 plt.savefig("Document\Images\general_tdma_plot.png")
