@@ -38,14 +38,8 @@ for i in range(len(n)):     #solving for different n's
     actual_v=1-(1-np.exp(-10))*x-np.exp(-10*x)  #the analytically found solution
 
     poisson_tdma(d,v)
-<<<<<<< HEAD
-
-    print(v.shape, v[-1], v[-2])
-    epsilon[i]=np.log10(np.max(np.absolute((v[2:-1]-actual_v[2:-1])/actual_v[2:-1])))
-=======
     epsilon[i]=np.log10(np.max(np.absolute((v[2:-1]-actual_v[2:-1])/actual_v[2:-1])))
 
->>>>>>> fdad2cc0f4d22afb2a8c1a9aec40c1d987315276
 
 print("| Relative error  | log(Step size) |")
 print("|-----------------|----------------|")
