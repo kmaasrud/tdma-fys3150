@@ -7,7 +7,7 @@ def tdma(a,b,c,d,v):
 
     c_tilde=np.zeros(n)
     d_tilde=np.zeros(n)
-    v_temp=np.zeros(n)   #this represents the vector v, the solution of the linear set of equations Av=d
+    #v_temp=np.zeros(n)   #this represents the vector v, the solution of the linear set of equations Av=d
 
     c_tilde[0]=c[0]/b[0]
     d_tilde[0]=d[0]/b[0]
@@ -17,12 +17,12 @@ def tdma(a,b,c,d,v):
         c_tilde[i]=c[i]*m
         d_tilde[i]=(d[i]-a[i-1]*d_tilde[i-1])*m
 
-    v_temp[n-1]=d_tilde[n-1]
+    v[n-1]=d_tilde[n-1]
 
     for i in reversed(range(1,n-1)):    #BACKWARD substitution
-        v_temp[i]=d_tilde[i]-c_tilde[i]*v_temp[i+1]
+        v[i]=d_tilde[i]-c_tilde[i]*v[i+1]
 
-    v[1:n+1]=v_temp  #inserting the solution of the linear eq. into the final solution, with boundary conditions
+    #v[1:n+1]=v_temp  #inserting the solution of the linear eq. into the final solution, with boundary conditions
 
 n=[10,100,1000]
 
@@ -36,8 +36,8 @@ for i in n:     #solving for different n's
     c[:]=-1
     d=np.linspace(0,1,i)
     d=h**2*100*np.exp(-10*d)
-    v=np.zeros(i+2)
-    x=np.linspace(0,1,i+2)
+    v=np.zeros(i)
+    x=np.linspace(0,1,i)
     v[1]=55
 
     tdma(a,b,c,d,v)
