@@ -39,23 +39,19 @@ void tdma(const vector<double>& a,
   }
 }
 
-
-
 ofstream ofile;
 
-
-
-int main ()
-{
-  size_t N = 1000;
+void solve(const int n){
+  size_t N = n;
 
   vector<double> a(N, -1);
   vector<double> b(N, 2);
   vector<double> c(N, -1);
 
   vector<double> d(N, 0.0);
-  vector<double> x(N, 0.0);
   vector<double> f(N, 0.0);
+
+  vector<double> x(N, 0.0);
   vector<double> anal(N, 0.0);
 
   double h = (1-0)/double(N);
@@ -66,14 +62,28 @@ int main ()
     d[i] = pow(h,2) * 100 * exp(-10 * x[i]);
     anal[i] = 1-(1-exp(-10)) * x[i] - exp(-10 * x[i]);
   }
-
   tdma(a,b,c,d,f);
-  ofile.open("results");
+  string n_string = to_string(n);
+  string filename = "results" + n_string;
+  ofile.open(filename);
   for (int i=0; i<N; i++){
-    ofile << setw(15) << setprecision(8) << x[i] << " " << f[i] << " "<< anal[i]<< endl;
+    ofile << setw(15) << setprecision(8) << x[i] << " " << f[i] << endl;
   }
   ofile.close();
-  system("python3 Plotter.py results");
+  a.clear(); b.clear(); c.clear();
+  d.clear(); f.clear();
+  x.clear(); anal.clear();
+}
+
+
+int main ()
+{
+  vector<int> nvec = {10, 100, 1000};
+  for (size_t i=0; i<nvec.size(); i++){
+    int n = nvec[i];
+    solve(n);
+  }
+  system("python3 Plotter_improved.py results10 results100 results1000");
   return 0;
 
 
