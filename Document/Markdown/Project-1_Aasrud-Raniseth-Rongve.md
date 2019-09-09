@@ -30,9 +30,9 @@ Then we solved the equations utilizing the Thomas algorithm, a special case of G
 To measure deviation between the analytical($u(x)$) and numerical solution , the relative error was calculated by
 $$\epsilon_{i}=\log_{10}\left(\left|\frac{v_{i}-u_{i}}{u_{i}}\right|\right)$$
 
-The stepsize in our algorithm varies between 
+The stepsize in our algorithm varies between
 
-By studying the number of floating point operations, FLOPs, we could predict which method would be the most efficient(in measured CPU time). However we realised quickly that computer-factors would play a big roll when increasing the size of the matrix(n).
+By studying the number of floating point operations, FLOPs, we could predict which method would be the most efficient(in measured CPU time). However we realised quickly that computer-factors would play a big role when increasing the size of the matrix.
 
 
 # Introduction
