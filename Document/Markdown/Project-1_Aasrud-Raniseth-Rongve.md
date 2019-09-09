@@ -246,13 +246,15 @@ The code is available in _Project-1/Code/Python/tdma_compare_lu.py_ in our githu
 | $n= 100$  |    $0.002442s$   |  $0.002045s$ |
 | $n= 1000$ | $0.026847s$ |    $0.131573s$|
 
-The table is a bit confusing since for $n=100$ the LU decomposition is faster than the TDMA method, but the general trend is that the TDMA method is wildly superior.
+The table is a bit confusing since for $n=100$ the LU decomposition is faster than the TDMA method, but the general trend is that the TDMA method is wildly superior. The cause of this  contradiction is most probably caused by some sort of overhead in Python or the *scipy* libraries.
 
-If the LU decomposition is run with a $10^5\times 10^5$ matrix, we quickly run out of RAM. This is because every matrix element takes up 8Bytes, which in our case adds up to 80Gigabytes.
+If the LU decomposition is run with a $10^5\times 10^5$ matrix, we quickly run out of RAM. This is because every matrix element takes up 8Bytes(double precision variable), which in our case adds up to 80Gigabytes.
 
 # Conclusion and perspectives
+The strongest case we made while deducting our computational tests is that algorithm optimization is extremely important for efficient use of the tools we have at our hands.
 
-
+We created a general tridiagonal matrix solver, then specialized it to our exact matrix, and compared the results. It was clear that the specialized algorithm is faster than a general one. In fact, it was more than $30\%$ faster.
+Furthermore we compared the general tridiagonal matrix solver against *scipy*'s LU-decomposition solver and showed that not only was the tridiagonal matrix solver wildly superior, but also that it allowed us to calculate solutions to matrices much larger than the LU-decomposition method, while still using a lot less computer memory.
 
 # Appendix
 [Source Code](https://github.com/kmaasrud/Project-1/tree/master/Code/Python)
