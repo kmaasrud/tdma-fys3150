@@ -261,7 +261,7 @@ If the LU decomposition is run with a $10^5\times 10^5$ matrix, we quickly run o
 
 # Conclusion and perspectives
 Running the different programs we now understand the importance of algorithm optimization.
-By reducing the number of FLOPs from 9n to 6n, our program would run 33% faster. This was not entirely apparent through the timing results though, since the background tasks interfered. When running *scipy*'s LU algorithm with a big matrix we realised the importance of reducing reading and writing to memory as much as possible in order to reduce the running time and even to be able to run the code. With bigger calculations this would be of an even greater importance.
+By reducing the number of FLOPs from 9n to 6n, our program would run 33% faster. This was not entirely apparent through the timing results though, since the background tasks interfered. When running *scipy*'s LU algorithm with a big matrix we realised the importance of reducing memory usage and unecessary calculations as much as possible in order to reduce the running time and even to be able to run the code. With bigger calculations this would be of an even greater importance.
 
 An important aspect of this project was to study the accuracy of our calculation by finding the limit for our stepsize in terms of computer precision. We see that when decreasing the stepsize the precision increases until the point where it starts to decrease. This might be due to round off errors. 
 
