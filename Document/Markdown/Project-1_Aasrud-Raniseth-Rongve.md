@@ -14,8 +14,6 @@ header-includes: |
   \rhead{Project 1}
   \lhead{\leftmark}
   \rfoot{\thepage}
-
-  header-includes: |
   \makeatletter
   \def\fps@figure{h}
   \makeatother
