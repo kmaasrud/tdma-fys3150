@@ -106,7 +106,7 @@ $$\mathbf{d}=\left[\begin{matrix}d_{1}\\ d_{2}\\\ d_{3}\\ \vdots \\ d_{n-1}\end{
 
 with $d_{i} = h^2 \cdot f_i$.
 
-We see that $\mathbf{A}$ is a tridiagonal matrix which we can employ the Thomas algorithm [@Hjorth-Jensen2018] on. This is done below.
+We see that $\mathbf{A}$ is a tridiagonal matrix which we can employ the Thomas algorithm [@Thomas1949] on. This is done below.
 
 ## Project 1 b)
 ### General algorithm
@@ -156,6 +156,21 @@ $$v_{n}=\tilde{d}_{n}$$
 $$v_{i}=\tilde{d}_{i}-\tilde{c}_{i}v_{i+1}$$
 
 This is the *backward substitution* necessary to find the solution.
+
+The core of our Thomas algorithm code reads as follows:
+
+```Python
+for i in range(1,n-1):  #FORWARD substitution
+    m=1.0/(b[i]-a[i-1]*c_tilde[i-1])  #saves 1 division, 1 multiplication and 1 subtraction
+    c_tilde[i]=c[i]*m
+    d_tilde[i]=(d[i]-a[i-1]*d_tilde[i-1])*m
+
+v[n-1]=d_tilde[n-1]
+
+for i in reversed(range(1,n-1)):    #BACKWARD substitution
+    v[i]=d_tilde[i]-c_tilde[i]*v[i+1]
+```
+Which implements the recursive formulas found immediately above. The code can be found in */Code/Python/general_tdma_function.py* in our repository linked [here](https://github.com/kmaasrud/Project-1/).
 
 The whole algorithm runs using $O(n)$ FLOPs, specifically $9n$. This is a major improvement on Gaussian elimination, which requires $O(n^{3})$ FLOPs [@Hjorth-Jensen2018].
 
