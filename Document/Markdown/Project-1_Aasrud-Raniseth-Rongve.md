@@ -18,6 +18,11 @@ header-includes: |
 The programs referenced in this article are in a repository linked in the appendix.
 
 # Abstract
+
+We study the importance of computer algorithm optimization and compare different algorithms used for tridiagonal matrix equation sets. We find that a specialized algorithm for tridiagonal matrices are superior to a general algorithm when it comes to efficiency. We also demonstrated that using a general matrix LU-decomposition is a waste of resources if your matrix is tridiagonal.
+
+
+# Introduction
 In this project we want to solve a one-dimensional Poisson equation with Dirichlet boundary conditions numerically in order to study the importance of stepsize and floating points operations, FLOPs.
 
 We approached this problem by rewriting the equation as a set of linear equations  **Av=d** under the following assumptions:
@@ -32,10 +37,10 @@ $$\epsilon_{i}=\log_{10}\left(\left|\frac{v_{i}-u_{i}}{u_{i}}\right|\right)$$
 
 The stepsize in our algorithm varies between
 
-By studying the number of floating point operations, FLOPs, we could predict which method would be the most efficient(in measured CPU time). However we realised quickly that computer-factors would play a big role when increasing the size of the matrix.
+By studying the number of floating point operations, FLOPs, we could predict which method would be the most efficient(in measured CPU time). However we realised quickly that computer-factors would play a big role for small FLOP-counts.
 
+--
 
-# Introduction
 The purpose of this project is to implement a numerically effective solution of the one-dimensional Poisson equation with Dirichlet boundary conditions
 $$-u''(x)=f(x),\ \ \ u(0)=u(1)=0$$
 
