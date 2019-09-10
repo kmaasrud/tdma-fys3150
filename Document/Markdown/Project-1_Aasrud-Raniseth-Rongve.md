@@ -159,7 +159,7 @@ $$\\
 This translates into a simpler algorithm, were we're able to cut down the number of FLOPs.
 
 ### Forward substitution special case
-Inserting the values of $a_{i}$, $b_{i}$ and $c_{i}$ into the general algorith, we get this:
+Inserting the values of $a_{i}$, $b_{i}$ and $c_{i}$ into the general algorithm, we get this:
 $$\\
 \tilde{b}_{i}=1\\
 \tilde{c}_{1}=-\frac{1}{2}\\
@@ -218,7 +218,7 @@ The program `special_tdma_function.py` is based on our specialized Thomas algori
     General TDMA, time spent on n = 1e+06 is 2.97735 seconds
     Special TDMA, time spent on n = 1e+06 is 2.56285 seconds
 
-Its not fully apparent at small matrix sizes, but once they get big, the reduction in FLOPs makes a difference. The difference in time fluctuates a bit, but this is probably due to background tasks taking up some of the memory.
+Its not fully apparent at small matrix sizes, but once they get big, the reduction in FLOPs makes a difference. The difference in time fluctuates a bit, but this is probably due to background tasks taking up some of the processing power, or reads/writes to the memory.
 
 ## Project 1 d)
 The program (`relative_error.py`) gives these results:
@@ -263,7 +263,7 @@ If the LU decomposition is run with a $10^5\times 10^5$ matrix, we quickly run o
 Running the different programs we now understand the importance of algorithm optimization.
 By reducing the number of FLOPs from 9n to 6n, our program would run 33% faster. This was not entirely apparent through the timing results though, since the background tasks interfered. When running *scipy*'s LU algorithm with a big matrix we realised the importance of reducing memory usage and unecessary calculations as much as possible in order to reduce the running time and even to be able to run the code. With bigger calculations this would be of an even greater importance.
 
-An important aspect of this project was to study the accuracy of our calculation by finding the limit for our stepsize in terms of computer precision. We see that when decreasing the stepsize the precision increases until the point where it starts to decrease. This might be due to round off errors. 
+An important aspect of this project was to study the accuracy of our calculation by finding the limit for our stepsize in terms of computer precision. We see that when decreasing the stepsize the precision increases until the point where it starts to decrease. This might be due to round off errors.
 
 # Appendix
 [Source Code](https://github.com/kmaasrud/Project-1/tree/master/Code/Python)
