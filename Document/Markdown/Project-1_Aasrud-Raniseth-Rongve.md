@@ -260,10 +260,21 @@ The table is a bit confusing since for $n=100$ the LU decomposition is faster th
 If the LU decomposition is run with a $10^5\times 10^5$ matrix, we quickly run out of RAM. This is because every matrix element takes up 8Bytes(double precision variable), which in our case adds up to 80Gigabytes.
 
 # Conclusion and perspectives
+Running the different programs we now understand the importance of algorithm optimization.
+By reducing the number of FLOPs from 6n to 4n, our program would run 30 % faster. When running our LU algorithm with a big matrix we realised the importance of reducing reading and writing to memory as much as possible in order to even be able to run the program on our 8 GB RAM computers.
+
+In more complex calculations this aspect would be of a greater importance 
+
 The strongest case we made while deducting our computational tests is that algorithm optimization is extremely important for efficient use of the tools we have at our hands.
 
-We created a general tridiagonal matrix solver, then specialized it to our exact matrix, and compared the results. It was clear that the specialized algorithm is faster than a general one. In fact, it was more than $30\%$ faster.
-Furthermore we compared the general tridiagonal matrix solver against *scipy*'s LU-decomposition solver and showed that not only was the tridiagonal matrix solver wildly superior, but also that it allowed us to calculate solutions to matrices much larger than the LU-decomposition method, while still using a lot less computer memory.
+Si noe om antall flops vs tiden det tok å kjøre programmene. Eventuelt kommentere hvorfor tiden varierte i ulike runs. ?
+
+
+We created a general tridiagonal matrix solver, then specialized it to our exact matrix, and compared the results. The specialized algorithm was 30 % faster than a general one.
+Furthermore we compared the general tridiagonal matrix solver against *scipy*'s LU-decomposition solver. This showed that the tridiagonal matrix solver wildly is superior. It also allowed us to calculate solutions to matrices much larger than the LU-decomposition method while using a lot less computer memory due.
+
+A important aspect of this project was to study the accuracy of our calculation by finding the limit for our stepsize.
+
 
 # Appendix
 [Source Code](https://github.com/kmaasrud/Project-1/tree/master/Code/Python)
