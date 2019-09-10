@@ -19,7 +19,7 @@ The programs referenced in this article are in a repository linked in the append
 
 # Abstract
 
-We study the importance of computer algorithm optimization and compare different algorithms used for tridiagonal matrix equation sets. We find that a specialized algorithm for tridiagonal matrices are superior to a general algorithm when it comes to efficiency. We also demonstrated that using a general matrix LU-decomposition is a waste of resources if your matrix is tridiagonal.
+We study the importance of computer algorithm optimization and compare different algorithms used for tridiagonal matrix equation sets. We find that a specialized algorithm for tridiagonal matrices are superior to a general algorithm when it comes to efficiency. We also demonstrate that using a general matrix LU-decomposition is a waste of resources if your matrix is tridiagonal.
 
 
 # Introduction
@@ -30,39 +30,12 @@ $$-u''(x)=f(x),\ \ \ u(0)=u(1)=0$$
 We will solve this numerically in a programming language of choice (in our case Python) in order to study the importance of stepsize and floating point operations, abbreviated FLOPs.\
 We approached this problem by rewriting the equation as a set of linear equations  **Av=d** under the following assumptions:
 
-+ A is $n\times n$ nonsingular
-+ $\mathbf{Ax = b }$ has a unique solution **x** for every **b** in $\mathbf R^n$
++ A is $n\times n$ nonsingular,
++ $\mathbf{Ax = b }$ has a unique solution **x** for every **b** in $\mathbf R^n.$
 
-Then we solved the equations utilizing the Thomas algorithm, a special case of Gaussian elimination that has two steps - the forward- and backward substitution. Thereafter we specialized our algorithm for a specific matrix $\mathbf A$ in order to reduce the number of FLOPs and compared its CPU time with our general algorithm.
+$\mathbf{A}$ is also tridiagonal, which means we can solve the equations utilizing the Thomas algorithm [@Hjorth-Jensen2018], a special case of Gaussian elimination for tridiagonal matrices. It has two steps - the forward- and backward substitution. Thereafter we specialize our algorithm for the specific matrix $\mathbf A$ the Poisson-equation gives us, in order to reduce the number of FLOPs, which we measure by comparing its CPU time with our general algorithm.
 
-Crucially, the step size affects the results of these methods, and this is also put to the test. The methods are put up against the analytical solution and for one of the algorithms, the relative error is calculated for different step sizes. Lastly, our method is compared to one using *scipy*'s LU-decomposition and linear algebra solver.
-
--- Gammel abstract under her --
-
-In this project we want to solve a one-dimensional Poisson equation with Dirichlet boundary conditions numerically in order to study the importance of stepsize and floating points operations, FLOPs.
-
-We approached this problem by rewriting the equation as a set of linear equations  **Av=d** under the following assumptions:
-
-+ A is $n\times n$ nonsingular
-+ $\mathbf{Ax = b }$ has a unique solution **x** for every **b** in $\mathbf R^n$
-
-Then we solved the equations utilizing the Thomas algorithm, a special case of Gaussian elimination that has two steps - the forward- and backward substitution. Thereafter we specialized our algorithm by choosing a specific matrix $\mathbf A$ in order to reduce the number of FLOPs and compared its CPU time with our general algorithm.
-
-To measure deviation between the analytical($u(x)$) and numerical solution , the relative error was calculated by
-$$\epsilon_{i}=\log_{10}\left(\left|\frac{v_{i}-u_{i}}{u_{i}}\right|\right)$$
-
-The stepsize in our algorithm varies between
-
-By studying the number of floating point operations, FLOPs, we could predict which method would be the most efficient(in measured CPU time). However we realised quickly that computer-factors would play a big role for small FLOP-counts.
-
--- Gammal intro under her --
-
-The purpose of this project is to implement a numerically effective solution of the one-dimensional Poisson equation with Dirichlet boundary conditions
-$$-u''(x)=f(x),\ \ \ u(0)=u(1)=0$$
-
-and to implement this in a programming language of choice (Python, in our case). This will be done using two different approaches - the general Thomas algorithm and a specialized Thomas algorithm - the speed of which is compared.
-
-Crucially, the step size affects the results of these methods, and this is also put to the test. The methods are put up against the analytical solution and for one of the algorithms, the relative error is calculated for different step sizes. Lastly, our method is compared to one using LU-decomposition.
+Crucially, the step size affects the results of these methods, and this is also put to the test. The methods are put up against the analytical solution and for one of the algorithms, the relative error is calculated for different step sizes. Lastly, our method is compared to another, using *scipy*'s LU-decomposition and linear algebra solver.
 
 # Theory and technicalites
 The Poisson equation we are going to solve reads as follows:
