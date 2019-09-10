@@ -18,6 +18,27 @@ header-includes: |
 The programs referenced in this article are in a repository linked in the appendix.
 
 # Abstract
+
+We study the importance of computer algorithm optimization and compare different algorithms used for tridiagonal matrix equation sets. We find that a specialized algorithm for tridiagonal matrices are superior to a general algorithm when it comes to efficiency. We also demonstrated that using a general matrix LU-decomposition is a waste of resources if your matrix is tridiagonal.
+
+
+# Introduction
+In this project we want to solve a one-dimensional Poisson equation with Dirichlet boundary conditions which reads as follows:
+
+$$-u''(x)=f(x),\ \ \ u(0)=u(1)=0$$
+
+We will solve this numerically in a programming language of choice (in our case Python) in order to study the importance of stepsize and floating point operations, abbreviated FLOPs.\
+We approached this problem by rewriting the equation as a set of linear equations  **Av=d** under the following assumptions:
+
++ A is $n\times n$ nonsingular
++ $\mathbf{Ax = b }$ has a unique solution **x** for every **b** in $\mathbf R^n$
+
+Then we solved the equations utilizing the Thomas algorithm, a special case of Gaussian elimination that has two steps - the forward- and backward substitution. Thereafter we specialized our algorithm for a specific matrix $\mathbf A$ in order to reduce the number of FLOPs and compared its CPU time with our general algorithm.
+
+Crucially, the step size affects the results of these methods, and this is also put to the test. The methods are put up against the analytical solution and for one of the algorithms, the relative error is calculated for different step sizes. Lastly, our method is compared to one using *scipy*'s LU-decomposition and linear algebra solver.
+
+-- Gammel abstract under her --
+
 In this project we want to solve a one-dimensional Poisson equation with Dirichlet boundary conditions numerically in order to study the importance of stepsize and floating points operations, FLOPs.
 
 We approached this problem by rewriting the equation as a set of linear equations  **Av=d** under the following assumptions:
@@ -32,10 +53,10 @@ $$\epsilon_{i}=\log_{10}\left(\left|\frac{v_{i}-u_{i}}{u_{i}}\right|\right)$$
 
 The stepsize in our algorithm varies between
 
-By studying the number of floating point operations, FLOPs, we could predict which method would be the most efficient(in measured CPU time). However we realised quickly that computer-factors would play a big role when increasing the size of the matrix.
+By studying the number of floating point operations, FLOPs, we could predict which method would be the most efficient(in measured CPU time). However we realised quickly that computer-factors would play a big role for small FLOP-counts.
 
+-- Gammal intro under her --
 
-# Introduction
 The purpose of this project is to implement a numerically effective solution of the one-dimensional Poisson equation with Dirichlet boundary conditions
 $$-u''(x)=f(x),\ \ \ u(0)=u(1)=0$$
 
@@ -85,7 +106,7 @@ $$\mathbf{d}=\left[\begin{matrix}d_{1}\\ d_{2}\\\ d_{3}\\ \vdots \\ d_{n-1}\end{
 
 with $d_{i} = h^2 \cdot f_i$.
 
-We see that $\mathbf{A}$ is a tridiagonal matrix which we can employ the Thomas algorithm [@Hjorth-Jensen2018] on. This is done below.
+We see that $\mathbf{A}$ is a tridiagonal matrix which we can employ the Thomas algorithm [@Thomas1949] on. This is done below.
 
 ## Project 1 b)
 ### General algorithm
@@ -135,6 +156,21 @@ $$v_{n}=\tilde{d}_{n}$$
 $$v_{i}=\tilde{d}_{i}-\tilde{c}_{i}v_{i+1}$$
 
 This is the *backward substitution* necessary to find the solution.
+
+The core of our Thomas algorithm code reads as follows:
+
+```Python
+for i in range(1,n-1):  #FORWARD substitution
+    m=1.0/(b[i]-a[i-1]*c_tilde[i-1])  #saves 1 division, 1 multiplication and 1 subtraction
+    c_tilde[i]=c[i]*m
+    d_tilde[i]=(d[i]-a[i-1]*d_tilde[i-1])*m
+
+v[n-1]=d_tilde[n-1]
+
+for i in reversed(range(1,n-1)):    #BACKWARD substitution
+    v[i]=d_tilde[i]-c_tilde[i]*v[i+1]
+```
+Which implements the recursive formulas found immediately above. The code can be found in */Code/Python/general_tdma_function.py* in our repository linked [here](https://github.com/kmaasrud/Project-1/).
 
 The whole algorithm runs using $O(n)$ FLOPs, specifically $9n$. This is a major improvement on Gaussian elimination, which requires $O(n^{3})$ FLOPs [@Hjorth-Jensen2018].
 
