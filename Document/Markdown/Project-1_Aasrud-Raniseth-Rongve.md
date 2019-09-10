@@ -14,6 +14,11 @@ header-includes: |
   \rhead{Project 1}
   \lhead{\leftmark}
   \rfoot{\thepage}
+
+  header-includes: |
+  \makeatletter
+  \def\fps@figure{h}
+  \makeatother
 ---
 The programs referenced in this article are in a repository linked in the appendix.
 
