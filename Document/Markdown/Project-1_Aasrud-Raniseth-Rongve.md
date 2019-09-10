@@ -23,6 +23,22 @@ We study the importance of computer algorithm optimization and compare different
 
 
 # Introduction
+In this project we want to solve a one-dimensional Poisson equation with Dirichlet boundary conditions which reads as follows:
+
+$$-u''(x)=f(x),\ \ \ u(0)=u(1)=0$$
+
+We will solve this numerically in a programming language of choice (in our case Python) in order to study the importance of stepsize and floating point operations, abbreviated FLOPs.\
+We approached this problem by rewriting the equation as a set of linear equations  **Av=d** under the following assumptions:
+
++ A is $n\times n$ nonsingular
++ $\mathbf{Ax = b }$ has a unique solution **x** for every **b** in $\mathbf R^n$
+
+Then we solved the equations utilizing the Thomas algorithm, a special case of Gaussian elimination that has two steps - the forward- and backward substitution. Thereafter we specialized our algorithm for a specific matrix $\mathbf A$ in order to reduce the number of FLOPs and compared its CPU time with our general algorithm.
+
+Crucially, the step size affects the results of these methods, and this is also put to the test. The methods are put up against the analytical solution and for one of the algorithms, the relative error is calculated for different step sizes. Lastly, our method is compared to one using *scipy*'s LU-decomposition and linear algebra solver.
+
+-- Gammel abstract under her --
+
 In this project we want to solve a one-dimensional Poisson equation with Dirichlet boundary conditions numerically in order to study the importance of stepsize and floating points operations, FLOPs.
 
 We approached this problem by rewriting the equation as a set of linear equations  **Av=d** under the following assumptions:
@@ -39,7 +55,7 @@ The stepsize in our algorithm varies between
 
 By studying the number of floating point operations, FLOPs, we could predict which method would be the most efficient(in measured CPU time). However we realised quickly that computer-factors would play a big role for small FLOP-counts.
 
---
+-- Gammal intro under her --
 
 The purpose of this project is to implement a numerically effective solution of the one-dimensional Poisson equation with Dirichlet boundary conditions
 $$-u''(x)=f(x),\ \ \ u(0)=u(1)=0$$
