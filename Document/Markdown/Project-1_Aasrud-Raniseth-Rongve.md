@@ -261,11 +261,33 @@ If the LU decomposition is run with a $10^5\times 10^5$ matrix, we quickly run o
 
 # Conclusion and perspectives
 Running the different programs we now understand the importance of algorithm optimization.
+<<<<<<< HEAD
+By reducing the number of FLOPs our program would run 30 % faster. When running *scipy*'s LU algorithm with a big matrix we realised the importance of reducing reading and writing to memory as much as possible in order to even be able to run the program on our 8 GB RAM computers. In more complex calculations this aspect would be of a greater importance
+
+Eventuelt kommentere hvorfor tiden varierte i ulike runs.
+
+¨¨¨¨¨¨¨¨
+
+Gammel versjon:
+The strongest case we made while deducting our computational tests is that algorithm optimization is extremely important for efficient use of the tools we have at our hands.
+
+We created a general tridiagonal matrix solver, then specialized it to our exact matrix, and compared the results. The specialized algorithm was 30 % faster than a general one.
+Furthermore we compared the general tridiagonal matrix solver against *scipy*'s LU-decomposition solver. This showed that the tridiagonal matrix solver wildly is superior. It also allowed us to calculate solutions to matrices much larger than the LU-decomposition method while using a lot less computer memory due.
+
+¨¨¨¨¨¨¨¨¨¨
+
+A important aspect of this project was to study the accuracy of our calculation by finding the limit for our stepsize in terms of computer precision. We see that when decreasing the stepsize the precision increases until the point where it starts to decrease. This might be due to round off errors.
+=======
 By reducing the number of FLOPs from 9n to 6n, our program would run 33% faster. When running *scipy*'s LU algorithm with a big matrix we realised the importance of reducing reading and writing to memory as much as possible in order to reduce the running time and even to be able to run the code. With bigger calculations this would be of an even greater importance.
 
 Eventuelt kommentere hvorfor tiden varierte i ulike runs.
 
+<<<<<<< HEAD
 An important aspect of this project was to study the accuracy of our calculation by finding the limit of our stepsize in terms of computer precision. We see that when decreasing the stepsize the precision increases until the point where it starts to decrease. This is because of machine precision round off error.
+=======
+A important aspect of this project was to study the accuracy of our calculation by finding the limit for our stepsize in terms of computer precision. We see that when decreasing the stepsize the precision increases until the point where it starts to decrease. This might be due to round off errors. 
+>>>>>>> d8a187115349327d0b8a6da24a41bf780fb1d210
+>>>>>>> 4d48b8b18b5da5ebb486a61d0de2a506e53d2d4a
 
 # Appendix
 [Source Code](https://github.com/kmaasrud/Project-1/tree/master/Code/Python)
