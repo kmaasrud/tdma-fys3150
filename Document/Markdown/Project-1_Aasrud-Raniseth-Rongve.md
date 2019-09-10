@@ -265,7 +265,7 @@ By reducing the number of FLOPs from 9n to 6n, our program would run 33% faster.
 
 Eventuelt kommentere hvorfor tiden varierte i ulike runs.
 
-A important aspect of this project was to study the accuracy of our calculation by finding the limit for our stepsize in terms of computer precision. We see that when decreasing the stepsize the precision increases until the point where it starts to decrease. This might be due to round off errors. 
+An important aspect of this project was to study the accuracy of our calculation by finding the limit of our stepsize in terms of computer precision. We see that when decreasing the stepsize the precision increases until the point where it starts to decrease. This is because of machine precision round off error.
 
 # Appendix
 [Source Code](https://github.com/kmaasrud/Project-1/tree/master/Code/Python)
