@@ -196,7 +196,7 @@ To compare the TDMA function with an LU decomposition we first put both function
 ## Project 1 b)
 The program `general_tdma_function.py` is based on the general Thomas algorithm - solving our sample Poisson equation and plotting it at different step sizes. It gives this result:
 
-![**Figure 1**: General TDMA solution for $n=10,100,1000$, compared to the analytical solution.](..\Images\general_tdma_plot.png)
+![General TDMA solution for $n=10,100,1000$, compared to the analytical solution.](..\Images\general_tdma_plot.png)
 
 Its quite clear that a smaller step size correlates to higher accuracy for these selections of step sizes.
 
@@ -226,7 +226,7 @@ Its not fully apparent at small matrix sizes, but once they get big, the reducti
 ## Project 1 d)
 The program (`relative_error.py`) gives these results:
 
-![**Figure 2**: log10($\epsilon$) vs log10(h)](..\Images\relative_error.png)
+![log10($\epsilon$) vs log10(h)](..\Images\relative_error.png)
 
 | Relative error  | $log_{10}(\text{Step size})$ |
 |-----------------|----------------|
